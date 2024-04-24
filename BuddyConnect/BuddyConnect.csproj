@@ -74,16 +74,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Pages\NewsListPage.xaml.cs">
+	  <Compile Update="GlobalPages\NewsListPage.xaml.cs">
 	    <DependentUpon>NewsListPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\TemplateListPage.xaml.cs">
+	  <Compile Update="GlobalPages\TemplateListPage.xaml.cs">
 	    <DependentUpon>TemplateListPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\WelcomePage.xaml.cs">
+	  <Compile Update="GlobalPages\WelcomePage.xaml.cs">
 	    <DependentUpon>WelcomePage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\SettingListPage.xaml.cs">
+	  <Compile Update="GlobalPages\SettingListPage.xaml.cs">
 	    <DependentUpon>SettingListPage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Resources\Languages\AppResources.Designer.cs">
@@ -101,16 +101,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Pages\NewsListPage.xaml">
+	  <MauiXaml Update="GlobalPages\NewsListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\TemplateListPage.xaml">
+	  <MauiXaml Update="GlobalPages\TemplateListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\WelcomePage.xaml">
+	  <MauiXaml Update="GlobalPages\WelcomePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\SettingListPage.xaml">
+	  <MauiXaml Update="GlobalPages\SettingListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Themes\DarkTheme.xaml">

@@ -25,7 +25,7 @@ dotnet workload install android
 GRAPHIC MAUI DEVELOPER HELP
 https://learn.microsoft.com/en-us/dotnet/maui/fundamentals/shell/pages?view=net-maui-8.0
 
-TIPY A VAIABILITY ZDROJE
+TIPY A VARIABILITY ZDROJE
 https://github.com/jsuarezruiz/awesome-dotnet-maui?tab=readme-ov-file#samples
 
 vlastní Styly
