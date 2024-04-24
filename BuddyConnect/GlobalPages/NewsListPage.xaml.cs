@@ -2,11 +2,16 @@
 
 namespace BuddyConnect
 {
-    public partial class NewsListPage : ContentPage
+    public partial class NewsListPage : ContentPage, IModalPage
     {
         public NewsListPage() {
             InitializeComponent();
             _ = LoadStartUpData();
+        }
+
+
+        public async Task Dismiss() {
+            await Navigation.PopModalAsync();
         }
 
 

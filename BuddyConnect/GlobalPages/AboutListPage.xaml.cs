@@ -1,9 +1,12 @@
-﻿using BuddyConnect.Functions;
+﻿using BuddyConect.Resources.Languages;
+using BuddyConnect.Functions;
 
 namespace BuddyConnect
 {
-    public partial class TemplateListPage : ContentPage, IModalPage {
-        public TemplateListPage() {
+    public partial class AboutListPage : ContentPage, IModalPage {
+
+
+        public AboutListPage() {
             InitializeComponent();
             _ = LoadStartUpData();
         }
@@ -15,6 +18,11 @@ namespace BuddyConnect
         public async Task<bool> LoadStartUpData() {
             //ti_themeSetting.Text = await SystemFunctions.ChangeorLoadTheme();
             return true;
+        }
+
+
+        private async void LearnMore_Clicked(object sender, EventArgs e) {
+            await Launcher.Default.OpenAsync(AppResources.WebsiteUrl);
         }
 
         /*

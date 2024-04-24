@@ -50,10 +50,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Resources\Images\flag_cz.png" />
-	  <None Remove="Resources\Images\flag_de.png" />
-	  <None Remove="Resources\Images\flag_en.png" />
+	  <None Remove="Resources\Images\cz.svg" />
+	  <None Remove="Resources\Images\de.svg" />
+	  <None Remove="Resources\Images\en.svg" />
 	  <None Remove="Resources\Images\heart.png" />
+	  <None Remove="Resources\Images\us.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -76,6 +77,12 @@
 	<ItemGroup>
 	  <Compile Update="GlobalPages\NewsListPage.xaml.cs">
 	    <DependentUpon>NewsListPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="GlobalPages\AboutListPage.xaml.cs">
+	    <DependentUpon>AboutListPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="GlobalPages\NoteListPage.xaml.cs">
+	    <DependentUpon>NoteListPage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="GlobalPages\TemplateListPage.xaml.cs">
 	    <DependentUpon>TemplateListPage.xaml</DependentUpon>
@@ -102,6 +109,12 @@
 
 	<ItemGroup>
 	  <MauiXaml Update="GlobalPages\NewsListPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="GlobalPages\AboutListPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="GlobalPages\NoteListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="GlobalPages\TemplateListPage.xaml">

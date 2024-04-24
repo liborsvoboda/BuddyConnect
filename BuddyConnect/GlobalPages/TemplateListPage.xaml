@@ -27,7 +27,9 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="60" />
             </Grid.RowDefinitions>
-
+            <ActivityIndicator x:Name="activity" HorizontalOptions="Center" VerticalOptions="Center"
+                               HeightRequest="100" WidthRequest="100" IsRunning="true" />
         </Grid>
+        
     </ScrollView>
 </ContentPage>

@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace BuddyConnect;
 
-public partial class MainPage : ContentPage
+public partial class MainPage : ContentPage, IModalPage
 {
 	int count = 0;
 
@@ -17,7 +17,13 @@ public partial class MainPage : ContentPage
         return true;
     }
 
-	private void OnCounterClicked(object sender, EventArgs e)
+
+    public async Task Dismiss() {
+        await Navigation.PopModalAsync();
+    }
+
+
+    private void OnCounterClicked(object sender, EventArgs e)
 	{
 		count++;
 

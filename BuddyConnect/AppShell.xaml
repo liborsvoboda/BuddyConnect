@@ -20,16 +20,32 @@
     <Shell.TitleView>
         <toolkit:UniformItemsLayout Padding="5" HorizontalOptions="Fill">
             <Label
-                x:Name="selectedMenu" Padding="2"
-                FontSize="Title" HorizontalOptions="Start" Text="{x:Static language:AppResources.Welcome}" TextColor="White" WidthRequest="200" />
-            <Button
-                x:Name="changeTheme"
-                BackgroundColor="GhostWhite" HeightRequest="47" HorizontalOptions="End"
-                ImageSource="{mi:Fluent Icon=DarkTheme24, IconAutoScaling=True}"
-                Clicked="OnThemeToolbarItemClicked" WidthRequest="60" />
+                x:Name="selectedMenu"
+                Padding="2"
+                FontSize="Title" HorizontalOptions="Start"
+                Text="{x:Static language:AppResources.Welcome}"
+                TextColor="White" WidthRequest="200" />
+
+            <!--  Style="{StaticResource CrashButtonStyle}"  -->
+            <HorizontalStackLayout HorizontalOptions="End" WidthRequest="110">
+                <Button
+                    x:Name="theme" WidthRequest="50" Margin="5" VerticalOptions="Center"
+                    BackgroundColor="LightSlateGray" Clicked="OnThemeToolbarItemClicked" HeightRequest="40" HorizontalOptions="End"
+                    ImageSource="{mi:Fluent Icon=DarkTheme24,
+                                            IconSize=20.0}" />
+
+                <ImageButton
+                    x:Name="language"
+                    Margin="0"
+                    BackgroundColor="LightSlateGray" Clicked="SelectLanguageClicked" HeightRequest="40" HorizontalOptions="End" MaximumWidthRequest="60" Source="cz.png" VerticalOptions="Center"
+                    WidthRequest="50" />
+
+            </HorizontalStackLayout>
         </toolkit:UniformItemsLayout>
     </Shell.TitleView>
 
+    
+    <!--PAGES ROUTING-->
     <ShellContent
         Title="{x:Static language:AppResources.AppName}"
         ContentTemplate="{DataTemplate local:WelcomePage}"
@@ -37,6 +53,7 @@
                          IconSize=30}"
         Route="WelcomePage" />
 
+    
     <ShellContent
         Title="{x:Static language:AppResources.AppName}"
         ContentTemplate="{DataTemplate local:MainPage}"
@@ -44,6 +61,7 @@
                          IconSize=30}"
         Route="MainPage" />
 
+    
     <ShellContent
         Title="{x:Static language:AppResources.News}"
         ContentTemplate="{DataTemplate local:NewsListPage}"
@@ -51,10 +69,28 @@
                          IconSize=30}"
         Route="NewsListPage" />
 
+    
     <ShellContent
         Title="{x:Static language:AppResources.Settings}"
         ContentTemplate="{DataTemplate local:SettingListPage}"
         Icon="{mi:Fluent Icon=DataUsageSettings20,
                          IconSize=30}"
         Route="SettingListPage" />
+
+
+    <ShellContent
+        Title="{x:Static language:AppResources.Notes}"
+        ContentTemplate="{DataTemplate local:NoteListPage}"
+        Icon="{mi:Material Icon=Notes,
+                         IconSize=30}"
+        Route="NoteListPage" />
+    
+
+    <ShellContent
+        Title="{x:Static language:AppResources.About}"
+        ContentTemplate="{DataTemplate local:AboutListPage}"
+        Icon="{mi:Material Icon=Info,
+                         IconSize=30}"
+        Route="AboutListPage" />
+
 </Shell>

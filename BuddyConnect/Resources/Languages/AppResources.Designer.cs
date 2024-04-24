@@ -61,6 +61,42 @@ namespace BuddyConect.Resources.Languages {
         }
         
         /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný O Aplikaci.
+        /// </summary>
+        public static string About {
+            get {
+                return ResourceManager.GetString("About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Přidat.
+        /// </summary>
+        public static string Add {
+            get {
+                return ResourceManager.GetString("Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Vložit Poznámku.
+        /// </summary>
+        public static string AddNote {
+            get {
+                return ResourceManager.GetString("AddNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Popis Aplikace.
+        /// </summary>
+        public static string AppDescription {
+            get {
+                return ResourceManager.GetString("AppDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Vyhledá lokalizovaný řetězec podobný Mód Aplikace.
         /// </summary>
         public static string AppMode {
@@ -79,6 +115,24 @@ namespace BuddyConect.Resources.Languages {
         }
         
         /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Zrušit.
+        /// </summary>
+        public static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Česky.
+        /// </summary>
+        public static string Czech {
+            get {
+                return ResourceManager.GetString("Czech", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Vyhledá lokalizovaný řetězec podobný Tmavý.
         /// </summary>
         public static string Dark {
@@ -88,11 +142,47 @@ namespace BuddyConect.Resources.Languages {
         }
         
         /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Smazat.
+        /// </summary>
+        public static string Delete {
+            get {
+                return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Deutsch.
+        /// </summary>
+        public static string Deutsch {
+            get {
+                return ResourceManager.GetString("Deutsch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný English.
+        /// </summary>
+        public static string English {
+            get {
+                return ResourceManager.GetString("English", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Vyhledá lokalizovaný řetězec podobný Jazyk.
         /// </summary>
         public static string Language {
             get {
                 return ResourceManager.GetString("Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Výběr Jazyku.
+        /// </summary>
+        public static string LanguageSelection {
+            get {
+                return ResourceManager.GetString("LanguageSelection", resourceCulture);
             }
         }
         
@@ -133,6 +223,33 @@ namespace BuddyConect.Resources.Languages {
         }
         
         /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Poznámky.
+        /// </summary>
+        public static string Notes {
+            get {
+                return ResourceManager.GetString("Notes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Otevřít webové stránky.
+        /// </summary>
+        public static string OpenWebsite {
+            get {
+                return ResourceManager.GetString("OpenWebsite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Uložit.
+        /// </summary>
+        public static string Save {
+            get {
+                return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Vyhledá lokalizovaný řetězec podobný Nastavení.
         /// </summary>
         public static string Settings {
@@ -142,11 +259,38 @@ namespace BuddyConect.Resources.Languages {
         }
         
         /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný 1.0.0.
+        /// </summary>
+        public static string Version {
+            get {
+                return ResourceManager.GetString("Version", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný https://kliknetezde.cz.
+        /// </summary>
+        public static string WebsiteUrl {
+            get {
+                return ResourceManager.GetString("WebsiteUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Vyhledá lokalizovaný řetězec podobný Vítejte.
         /// </summary>
         public static string Welcome {
             get {
                 return ResourceManager.GetString("Welcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Zapište si poznámku.
+        /// </summary>
+        public static string WriteNoteHere {
+            get {
+                return ResourceManager.GetString("WriteNoteHere", resourceCulture);
             }
         }
     }

@@ -3,11 +3,16 @@ using System.Diagnostics;
 
 namespace BuddyConnect
 {
-    public partial class SettingListPage : ContentPage {
+    public partial class SettingListPage : ContentPage, IModalPage {
         
         public SettingListPage() {
             InitializeComponent();
             _ = LoadStartUpData();
+        }
+
+
+        public async Task Dismiss() {
+            await Navigation.PopModalAsync();
         }
 
 
