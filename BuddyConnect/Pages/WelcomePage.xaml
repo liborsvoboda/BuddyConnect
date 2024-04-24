@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="BuddyConnect.WelcomePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:language="clr-namespace:BuddyConect.Resources.Languages"
+    xmlns:local="clr-namespace:BuddyConnect"
+    Title="{x:Static language:AppResources.AppName}"
+    BackgroundColor="{DynamicResource PageBackgroundColor}">
+
+    <ScrollView>
+        <Grid BackgroundColor="{DynamicResource TransparentBackgroundColor}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.15*" />
+                <RowDefinition Height="0.7*" />
+                <RowDefinition Height="0.15*" />
+            </Grid.RowDefinitions>
+
+            <Label
+                x:Name="appName" Grid.Row="0"
+                FontAttributes="Bold" FontSize="50" HorizontalTextAlignment="Center"
+                Style="{StaticResource LargeLabelStyle}"
+                Text="{x:Static language:AppResources.AppName}"
+                TextColor="DodgerBlue" VerticalTextAlignment="Center" />
+
+            <Image
+                x:Name="Heart" Grid.Row="1"
+                HeightRequest="400" HorizontalOptions="Center" Source="heart.png" VerticalOptions="Center" WidthRequest="400" />
+
+            <Label
+                x:Name="label"
+                Grid.Row="2"
+                FontAttributes="Bold" FontSize="50" HorizontalTextAlignment="Center"
+                Style="{StaticResource LargeLabelStyle}"
+                Text="{x:Static language:AppResources.Loading}"
+                TextColor="DodgerBlue" VerticalTextAlignment="Center" />
+
+
+        </Grid>
+    </ScrollView>
+</ContentPage>

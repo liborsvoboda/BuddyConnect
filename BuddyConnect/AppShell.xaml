@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="BuddyConnect.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:language="clr-namespace:BuddyConect.Resources.Languages"
+    xmlns:local="clr-namespace:BuddyConnect"
+    xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    Title="{x:Static language:AppResources.Menu}"
+    FlyoutBackgroundColor="PeachPuff"
+    FlyoutHeaderBehavior="Fixed"
+    FlyoutIcon="{mi:Fluent Icon=AppTitle24}"
+    Navigated="AfterNavigationChanged"
+    Shell.FlyoutBehavior="Flyout"
+    Shell.NavBarHasShadow="True"
+    Shell.NavBarIsVisible="True"
+    Shell.PresentationMode="Animated">
+
+    <Shell.TitleView>
+        <toolkit:UniformItemsLayout Padding="5" HorizontalOptions="Fill">
+            <Label
+                x:Name="selectedMenu" Padding="2"
+                FontSize="Title" HorizontalOptions="Start" Text="{x:Static language:AppResources.Welcome}" TextColor="White" WidthRequest="200" />
+            <Button
+                x:Name="changeTheme"
+                BackgroundColor="GhostWhite" HeightRequest="47" HorizontalOptions="End"
+                ImageSource="{mi:Fluent Icon=DarkTheme24, IconAutoScaling=True}"
+                Clicked="OnThemeToolbarItemClicked" WidthRequest="60" />
+        </toolkit:UniformItemsLayout>
+    </Shell.TitleView>
+
+    <ShellContent
+        Title="{x:Static language:AppResources.AppName}"
+        ContentTemplate="{DataTemplate local:WelcomePage}"
+        Icon="{mi:Fluent Icon=Wallpaper24,
+                         IconSize=30}"
+        Route="WelcomePage" />
+
+    <ShellContent
+        Title="{x:Static language:AppResources.AppName}"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Icon="{mi:Fluent Icon=DataUsage24,
+                         IconSize=30}"
+        Route="MainPage" />
+
+    <ShellContent
+        Title="{x:Static language:AppResources.News}"
+        ContentTemplate="{DataTemplate local:NewsListPage}"
+        Icon="{mi:Fluent Icon=News28,
+                         IconSize=30}"
+        Route="NewsListPage" />
+
+    <ShellContent
+        Title="{x:Static language:AppResources.Settings}"
+        ContentTemplate="{DataTemplate local:SettingListPage}"
+        Icon="{mi:Fluent Icon=DataUsageSettings20,
+                         IconSize=30}"
+        Route="SettingListPage" />
+</Shell>
