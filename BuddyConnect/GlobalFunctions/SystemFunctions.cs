@@ -1,6 +1,7 @@
-﻿using BuddyConect.Resources.Languages;
+﻿using BuddyConnect.Resources.Languages;
 using BuddyConnect.Controllers;
 using System.Reflection;
+using System.Globalization;
 
 namespace BuddyConnect.Functions
 {
@@ -16,12 +17,14 @@ namespace BuddyConnect.Functions
             if (string.IsNullOrWhiteSpace(theme) && App.AppSetting.Theme == null) {
                 theme = (await SettingListController.LoadSettingListThemeStartup()).Value;
                 change = false;
-            //Load from Setting
-            } else if (string.IsNullOrWhiteSpace(theme) && App.AppSetting.Theme != null && !change) {
+                //Load from Setting
+            }
+            else if (string.IsNullOrWhiteSpace(theme) && App.AppSetting.Theme != null && !change) {
                 theme = App.AppSetting.Theme;
 
-            //change Theme
-            } else if(string.IsNullOrWhiteSpace(theme) && App.AppSetting.Theme != null && change) {
+                //change Theme
+            }
+            else if (string.IsNullOrWhiteSpace(theme) && App.AppSetting.Theme != null && change) {
                 theme = App.AppSetting.Theme;
             }
 
@@ -35,7 +38,8 @@ namespace BuddyConnect.Functions
                         theme = "Dark"; translatedTheme = App.AppSetting.TranslatedTheme = AppResources.Light;
                         mergedDictionaries.Add(new DarkTheme()); break;
                 }
-            } else {
+            }
+            else {
                 switch (theme) {
                     case "Light":
                         theme = "Dark"; translatedTheme = App.AppSetting.TranslatedTheme = AppResources.Light;
@@ -50,5 +54,24 @@ namespace BuddyConnect.Functions
             return translatedTheme;
         }
 
+
+        //Central Change Language
+        public async static Task<string> ChangeorLoadLanguage(string language = null) {
+            //Load from DB
+            if (string.IsNullOrWhiteSpace(language)) {
+                language = (await SettingListController.LoadSettingListLanguageStartup()).Value;
+                //Load from Setting
+            }
+
+            //Save Selected Dictionary
+            App.AppSetting.Language = language;
+            await SettingListController.SetSelectedLanguage(language);
+
+            //Set Selected Dictionary
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(language);
+            AppResources.Culture = new CultureInfo(language);
+
+            return App.AppSetting.Language;
+        }
     }
 }

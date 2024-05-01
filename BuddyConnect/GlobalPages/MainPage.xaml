@@ -3,13 +3,15 @@
     x:Class="BuddyConnect.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:language="clr-namespace:BuddyConect.Resources.Languages"
+    xmlns:language="clr-namespace:BuddyConnect.Resources.Languages"
     xmlns:local="clr-namespace:BuddyConnect"
     xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     BackgroundColor="{DynamicResource PageBackgroundColor}"
     Shell.NavBarHasShadow="true"
-    Shell.PresentationMode="ModalAnimated">
+    Shell.PresentationMode="ModalAnimated"
+    AutomationId="AppName"
+    >
 
     <ScrollView>
         <VerticalStackLayout

@@ -19,7 +19,7 @@ namespace BuddyConnect
 
         //Solve Load Startup Data and Remove Welcome Page
         public async Task<bool> LoadStartUpData() {
-            await StatupControls.StartupInit();
+            //await StatupControls.StartupInit();
 
             await Heart.ScaleTo(1.3, 1000); await Heart.ScaleTo(1, 1000);
             await Heart.ScaleTo(1.3, 1000); await Heart.ScaleTo(1, 1000);

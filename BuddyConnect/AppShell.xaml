@@ -3,7 +3,7 @@
     x:Class="BuddyConnect.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:language="clr-namespace:BuddyConect.Resources.Languages"
+    xmlns:language="clr-namespace:BuddyConnect.Resources.Languages"
     xmlns:local="clr-namespace:BuddyConnect"
     xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
@@ -35,18 +35,18 @@
                                             IconSize=20.0}" />
 
                 <ImageButton
-                    x:Name="language"
-                    Margin="0"
-                    BackgroundColor="LightSlateGray" Clicked="SelectLanguageClicked" HeightRequest="40" HorizontalOptions="End" MaximumWidthRequest="60" Source="cz.png" VerticalOptions="Center"
-                    WidthRequest="50" />
+                    x:Name="language" Margin="0"
+                    BackgroundColor="LightSlateGray" Clicked="SelectLanguageClicked" HeightRequest="39" WidthRequest="50"
+                    HorizontalOptions="End" VerticalOptions="Center"/>
 
             </HorizontalStackLayout>
         </toolkit:UniformItemsLayout>
     </Shell.TitleView>
 
-    
-    <!--PAGES ROUTING-->
+
+    <!--PAGES ROUTING AutomationId is Translated Title-->
     <ShellContent
+        x:Name="WelcomePage"
         Title="{x:Static language:AppResources.AppName}"
         ContentTemplate="{DataTemplate local:WelcomePage}"
         Icon="{mi:Fluent Icon=Wallpaper24,
@@ -55,6 +55,7 @@
 
     
     <ShellContent
+        x:Name="MainPage"
         Title="{x:Static language:AppResources.AppName}"
         ContentTemplate="{DataTemplate local:MainPage}"
         Icon="{mi:Fluent Icon=DataUsage24,
@@ -63,6 +64,7 @@
 
     
     <ShellContent
+        x:Name="NewsListPage"
         Title="{x:Static language:AppResources.News}"
         ContentTemplate="{DataTemplate local:NewsListPage}"
         Icon="{mi:Fluent Icon=News28,
@@ -71,7 +73,7 @@
 
     
     <ShellContent
-        Title="{x:Static language:AppResources.Settings}"
+        x:Name="SettingListPage"
         ContentTemplate="{DataTemplate local:SettingListPage}"
         Icon="{mi:Fluent Icon=DataUsageSettings20,
                          IconSize=30}"
@@ -79,6 +81,7 @@
 
 
     <ShellContent
+        x:Name="NoteListPage"
         Title="{x:Static language:AppResources.Notes}"
         ContentTemplate="{DataTemplate local:NoteListPage}"
         Icon="{mi:Material Icon=Notes,
@@ -87,6 +90,7 @@
     
 
     <ShellContent
+        x:Name="AboutListPage"
         Title="{x:Static language:AppResources.About}"
         ContentTemplate="{DataTemplate local:AboutListPage}"
         Icon="{mi:Material Icon=Info,

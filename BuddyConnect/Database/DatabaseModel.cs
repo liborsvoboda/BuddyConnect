@@ -19,7 +19,7 @@ namespace BuddyConnect.DatabaseModel {
     public class DefaultSettingList {
         public static List<SettingList> DefaultItems = new List<SettingList>() {
              new SettingList() { Key = "Theme", Value ="Light"},
-             new SettingList() { Key = "Language", Value ="cs-CZ"}
+             new SettingList() { Key = "Language", Value ="cs"}
         };
     }
 
@@ -35,9 +35,9 @@ namespace BuddyConnect.DatabaseModel {
 
     public class DefaultLanguageList {
         public static List<LanguageList> DefaultItems = new List<LanguageList>() {
-             new LanguageList() { Language = "cs-CZ", Name ="Česky"},
-             new LanguageList() { Language = "en-US", Name ="English"},
-             new LanguageList() { Language = "de-DE", Name ="Deutsch"}
+             new LanguageList() { Language = "cs", Name ="Česky"},
+             new LanguageList() { Language = "en", Name ="English"},
+             new LanguageList() { Language = "de", Name ="Deutsch"}
         };
     }
 }

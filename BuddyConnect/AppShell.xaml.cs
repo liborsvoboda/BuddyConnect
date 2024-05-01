@@ -1,6 +1,7 @@
-﻿using BuddyConect.Resources.Languages;
+﻿using BuddyConnect.Resources.Languages;
 using BuddyConnect.Functions;
-using Microsoft.Maui.Handlers;
+using System.Globalization;
+
 
 namespace BuddyConnect;
 
@@ -10,6 +11,18 @@ public partial class AppShell : Shell
 	public AppShell()
 	{
 		InitializeComponent();
+        _ = LoadStartUpData();
+    }
+
+
+    //Load App Startup
+    public async Task<bool> LoadStartUpData() {
+        await StatupControls.StartupInit();
+        language.Source = ImageSource.FromFile(await SystemFunctions.ChangeorLoadLanguage() + ".png");
+
+        //RENAME MENU ITEMS
+        SetTranslatedTitle();
+        return true;
     }
 
 
@@ -19,14 +32,17 @@ public partial class AppShell : Shell
     }
 
 
-    //Language Selection
+    //change Language
     private async void SelectLanguageClicked(object sender, EventArgs e) {
         string action = await DisplayActionSheet(AppResources.LanguageSelection, AppResources.Cancel, null, AppResources.Czech, AppResources.English, AppResources.Deutsch);
 
-        if (action == AppResources.Czech) { language.Source = ImageSource.FromFile("cz.png"); }
-        else if (action == AppResources.English) { language.Source = ImageSource.FromFile("en.png"); }
-        else if (action == AppResources.Deutsch) { language.Source = ImageSource.FromFile("de.png"); }
+        if (action == AppResources.Czech) { language.Source = ImageSource.FromFile(await SystemFunctions.ChangeorLoadLanguage("cs") + ".png");  }
+        else if (action == AppResources.English) { language.Source = ImageSource.FromFile(await SystemFunctions.ChangeorLoadLanguage("en") + ".png"); }
+        else if (action == AppResources.Deutsch) { language.Source = ImageSource.FromFile(await SystemFunctions.ChangeorLoadLanguage("de") + ".png"); }
+
+        SetTranslatedTitle();
     }
+
 
 
     //Before Navigation Change
@@ -62,5 +78,13 @@ public partial class AppShell : Shell
         } catch { }
     }
 
-
+    //Change/Set  Translated Page Name
+    private void SetTranslatedTitle() {
+        WelcomePage.Title = AppResources.ResourceManager.GetString("Welcome", new CultureInfo(App.AppSetting.Language));
+        MainPage.Title = AppResources.ResourceManager.GetString("AppName", new CultureInfo(App.AppSetting.Language));
+        NewsListPage.Title = AppResources.ResourceManager.GetString("News", new CultureInfo(App.AppSetting.Language));
+        SettingListPage.Title = AppResources.ResourceManager.GetString("Settings", new CultureInfo(App.AppSetting.Language));
+        NoteListPage.Title = AppResources.ResourceManager.GetString("Notes", new CultureInfo(App.AppSetting.Language));
+        AboutListPage.Title = AppResources.ResourceManager.GetString("About", new CultureInfo(App.AppSetting.Language));
+    }
 }

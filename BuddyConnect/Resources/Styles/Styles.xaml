@@ -24,7 +24,7 @@
     </Style>
 
 
-   
+
     <Style TargetType="Button">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Primary}}" />
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
@@ -47,55 +47,35 @@
         </Setter>
     </Style>
 
-    <!--START EXTENDED-->
-    <Style
-        x:Key="CrashButtonStyle"
-        TargetType="Button">
-        <Setter
-            Property="CornerRadius"
-            Value="4" />
-        <Setter
-            Property="TextColor"
-            Value="White" />
-        <Setter
-            Property="BackgroundColor"
-            Value="Orange" />
-        <Setter
-            Property="VisualStateManager.VisualStateGroups">
+    <!--  START EXTENDED  -->
+    <Style x:Key="CrashButtonStyle" TargetType="Button">
+        <Setter Property="CornerRadius" Value="4" />
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="BackgroundColor" Value="Orange" />
+        <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
-                <VisualStateGroup
-                    x:Name="CommonStates">
-                    <VisualState
-                        x:Name="Normal" />
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
 
-                    <VisualState
-                        x:Name="Disabled">
+                    <VisualState x:Name="Disabled">
                         <VisualState.Setters>
-                            <Setter
-                                Property="BackgroundColor"
-                                Value="DarkGray" />
+                            <Setter Property="BackgroundColor" Value="DarkGray" />
                         </VisualState.Setters>
                     </VisualState>
 
-                    <VisualState
-                        x:Name="PointerOver">
+                    <VisualState x:Name="PointerOver">
                         <VisualState.Setters>
-                            <Setter
-                                Property="Shadow">
+                            <Setter Property="Shadow">
                                 <Setter.Value>
-                                    <Shadow
-                                        Brush="Skyblue" />
+                                    <Shadow Brush="Skyblue" />
                                 </Setter.Value>
                             </Setter>
                         </VisualState.Setters>
                     </VisualState>
 
-                    <VisualState
-                        x:Name="Pressed">
+                    <VisualState x:Name="Pressed">
                         <VisualState.Setters>
-                            <Setter
-                                Property="BackgroundColor"
-                                Value="Violet" />
+                            <Setter Property="BackgroundColor" Value="Violet" />
                         </VisualState.Setters>
                     </VisualState>
                 </VisualStateGroup>
@@ -103,10 +83,10 @@
         </Setter>
     </Style>
 
-    
-    
 
-    <!--END EXTENDED-->
+
+
+    <!--  END EXTENDED  -->
 
 
     <Style TargetType="CheckBox">

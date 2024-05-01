@@ -1,6 +1,6 @@
 ﻿using SQLite;
 using BuddyConnect.DatabaseModel;
-using BuddyConect.Resources.Languages;
+using BuddyConnect.Resources.Languages;
 using System.Diagnostics;
 using BuddyConnect.Functions;
 
@@ -52,6 +52,8 @@ namespace BuddyConnect {
             await SystemFunctions.ChangeorLoadTheme();
 
             //Set Language 
+            await SystemFunctions.ChangeorLoadLanguage();
+
             return true;
         }
 

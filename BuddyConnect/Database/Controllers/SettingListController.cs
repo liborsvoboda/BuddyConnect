@@ -1,7 +1,6 @@
 ﻿using SQLite;
 using BuddyConnect.DatabaseModel;
-using BuddyConect.Resources.Languages;
-using Microsoft.Maui.Controls.PlatformConfiguration;
+using BuddyConnect.Resources.Languages;
 using System.Diagnostics;
 
 namespace BuddyConnect.Controllers {
@@ -57,6 +56,7 @@ namespace BuddyConnect.Controllers {
         public static async Task<SettingList> LoadSettingListLanguageStartup() {
             return await App.AppSetting.Database.Table<SettingList>().Where(i => i.Key == "Language").FirstOrDefaultAsync();
         }
+
 
         public static async Task<int> SetSelectedLanguage(string language) {
             try { 

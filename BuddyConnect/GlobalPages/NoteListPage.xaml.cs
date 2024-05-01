@@ -1,4 +1,4 @@
-using BuddyConect.Resources.Languages;
+using BuddyConnect.Resources.Languages;
 using BuddyConnect.Controls;
 using System.Linq;
 

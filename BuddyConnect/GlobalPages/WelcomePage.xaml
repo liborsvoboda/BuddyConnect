@@ -3,7 +3,7 @@
     x:Class="BuddyConnect.WelcomePage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:language="clr-namespace:BuddyConect.Resources.Languages"
+    xmlns:language="clr-namespace:BuddyConnect.Resources.Languages"
     xmlns:local="clr-namespace:BuddyConnect"
     Title="{x:Static language:AppResources.AppName}"
     BackgroundColor="{DynamicResource PageBackgroundColor}">

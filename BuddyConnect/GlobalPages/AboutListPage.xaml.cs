@@ -1,4 +1,4 @@
-﻿using BuddyConect.Resources.Languages;
+﻿using BuddyConnect.Resources.Languages;
 using BuddyConnect.Functions;
 
 namespace BuddyConnect

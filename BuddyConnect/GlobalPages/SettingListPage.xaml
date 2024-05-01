@@ -7,7 +7,7 @@
     xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     
-    xmlns:language="clr-namespace:BuddyConect.Resources.Languages"
+    xmlns:language="clr-namespace:BuddyConnect.Resources.Languages"
     xmlns:local="clr-namespace:BuddyConnect"
     
     Title="{x:Static language:AppResources.Settings}"
