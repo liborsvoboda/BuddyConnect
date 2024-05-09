@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace BuddyConnect
 {
-    public partial class SettingListPage : ContentPage, IModalPage {
+    public partial class SettingListPage : ContentPage, GlobalServices {
         
         public SettingListPage() {
             InitializeComponent();

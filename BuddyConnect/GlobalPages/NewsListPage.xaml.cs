@@ -2,7 +2,7 @@
 
 namespace BuddyConnect
 {
-    public partial class NewsListPage : ContentPage, IModalPage
+    public partial class NewsListPage : ContentPage, GlobalServices
     {
         public NewsListPage() {
             InitializeComponent();

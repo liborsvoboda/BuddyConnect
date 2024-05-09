@@ -2,7 +2,7 @@
 
 namespace BuddyConnect
 {
-    public partial class TemplateListPage : ContentPage, IModalPage {
+    public partial class TemplateListPage : ContentPage, GlobalServices {
         public TemplateListPage() {
             InitializeComponent();
             _ = LoadStartUpData();

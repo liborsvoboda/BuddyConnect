@@ -19,7 +19,7 @@
     </ContentPage.ToolbarItems>-->
     
     <ScrollView>
-        <Grid BackgroundColor="{DynamicResource TransparentBackgroundColor}">
+        <Grid BackgroundColor="{DynamicResource TransparentColor}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -27,8 +27,17 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="60" />
             </Grid.RowDefinitions>
-            <ActivityIndicator x:Name="activity" HorizontalOptions="Center" VerticalOptions="Center"
+
+            <ActivityIndicator x:Name="loading" HorizontalOptions="Center" VerticalOptions="Center"
                                HeightRequest="100" WidthRequest="100" IsRunning="true" />
+
+
+
+            <Button Text="{x:Static language:AppResources.OpenWebsite}"
+                    BackgroundColor="{DynamicResource PrimaryButtonBackgroundColor}" 
+                    TextColor="{DynamicResource PrimaryButtonTextColor}"/>
+            
+            
         </Grid>
         
     </ScrollView>

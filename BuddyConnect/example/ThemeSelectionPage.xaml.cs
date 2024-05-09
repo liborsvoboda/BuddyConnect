@@ -1,7 +1,7 @@
 ﻿
 namespace BuddyConnect
 {
-    public partial class ThemeSelectionPage : ContentPage, IModalPage
+    public partial class ThemeSelectionPage : ContentPage, GlobalServices
     {
         public ThemeSelectionPage()
         {

@@ -3,7 +3,8 @@
     x:Class="BuddyConnect.App"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:BuddyConnect">
+    xmlns:local="clr-namespace:BuddyConnect"
+    >
     <Application.Resources>
 
         <ResourceDictionary>
@@ -15,10 +16,14 @@
 
             <ResourceDictionary Source="Themes/LightTheme.xaml" />
 
+            
+            <!--Global Object Types Definition-->
             <Style TargetType="StackLayout">
                 <Setter Property="Spacing" Value="6" />
             </Style>
+            
             <Style TargetType="Grid">
+                <Setter Property="BackgroundColor" Value="{DynamicResource TransparentColor}" />
                 <Setter Property="RowSpacing" Value="6" />
                 <Setter Property="ColumnSpacing" Value="6" />
             </Style>
@@ -29,8 +34,6 @@
             </Style>
 
             <Style x:Key="ButtonStyle" TargetType="Button">
-                <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryColor}" />
-                <Setter Property="TextColor" Value="{DynamicResource SecondaryColor}" />
                 <Setter Property="HeightRequest" Value="45" />
                 <Setter Property="WidthRequest" Value="190" />
                 <Setter Property="CornerRadius" Value="18" />

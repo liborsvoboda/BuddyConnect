@@ -11,23 +11,29 @@ namespace BuddyConnect {
         //Database Init
         public static async Task StartupInit() {
             try {
-                if (App.AppSetting.Database is not null)
+                if (App.appSetting.Database is not null)
                     return;
 
-                App.AppSetting.Database = new SQLiteAsyncConnection(Constants.DatabasePath, Constants.Flags);
+                App.appSetting.Database = new SQLiteAsyncConnection(Constants.DatabasePath, Constants.Flags);
 
                 //Create And Set Default In Database
-                if ((await App.AppSetting.Database.GetTableInfoAsync(nameof(LanguageList))).Count == 0) {
-                    await App.AppSetting.Database.CreateTableAsync<LanguageList>();
+                if ((await App.appSetting.Database.GetTableInfoAsync(nameof(LanguageList))).Count == 0) {
+                    await App.appSetting.Database.CreateTableAsync<LanguageList>();
                     if ((await Controllers.LanguageListController.GetLanguageList()).Count == 0) {
-                        await Controllers.LanguageListController.SaveLanguageListRange(DefaultLanguageList.DefaultItems.ToList());
+                        await Controllers.LanguageListController.SaveLanguageListRange(DefaultLanguageList.DefaultItems);
                     }
                 }
-                if ((await App.AppSetting.Database.GetTableInfoAsync(nameof(SettingList))).Count == 0) {
-                    await App.AppSetting.Database.CreateTableAsync<SettingList>();
+                if ((await App.appSetting.Database.GetTableInfoAsync(nameof(SettingList))).Count == 0) {
+                    await App.appSetting.Database.CreateTableAsync<SettingList>();
                     if ((await Controllers.SettingListController.GetSettingList()).Count == 0) {
                         await Controllers.SettingListController.SaveSettingListRange(DefaultSettingList.DefaultItems);
                     }
+                }
+                if ((await App.appSetting.Database.GetTableInfoAsync(nameof(NoteList))).Count == 0) {
+                    await App.appSetting.Database.CreateTableAsync<NoteList>();
+                }
+                if ((await App.appSetting.Database.GetTableInfoAsync(nameof(DeviceList))).Count == 0) {
+                    await App.appSetting.Database.CreateTableAsync<DeviceList>();
                 }
 
                 //Load App Settings
@@ -44,9 +50,13 @@ namespace BuddyConnect {
         public static async Task<bool> LoadStartupSettings() {
 
             //Load Variables
-            App.AppSetting.Theme = (await Controllers.SettingListController.GetSettingListByKey("Theme")).Value;
-            App.AppSetting.TranslatedTheme = AppResources.ResourceManager.GetString(App.AppSetting.Theme);
-            App.AppSetting.Language = (await Controllers.SettingListController.GetSettingListByKey("Language")).Value;
+            App.appSetting.Theme = (await Controllers.SettingListController.GetSettingListByKey("Theme")).Value;
+            App.appSetting.TranslatedTheme = AppResources.ResourceManager.GetString(App.appSetting.Theme);
+            App.appSetting.Language = (await Controllers.SettingListController.GetSettingListByKey("Language")).Value;
+            App.appSetting.DeviceName = (await Controllers.SettingListController.GetSettingListByKey("DeviceName")).Value;
+
+            App.appSetting.Notes = (await Controllers.NoteListController.GetNoteList());
+            App.appSetting.Devices = (await Controllers.DeviceListController.GetDeviceList());
 
             //Configure Theme
             await SystemFunctions.ChangeorLoadTheme();

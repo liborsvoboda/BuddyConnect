@@ -19,7 +19,8 @@ namespace BuddyConnect.DatabaseModel {
     public class DefaultSettingList {
         public static List<SettingList> DefaultItems = new List<SettingList>() {
              new SettingList() { Key = "Theme", Value ="Light"},
-             new SettingList() { Key = "Language", Value ="cs"}
+             new SettingList() { Key = "Language", Value ="cs"},
+             new SettingList() { Key = "DeviceName", Value ="DVBdiver"}
         };
     }
 
@@ -39,5 +40,22 @@ namespace BuddyConnect.DatabaseModel {
              new LanguageList() { Language = "en", Name ="English"},
              new LanguageList() { Language = "de", Name ="Deutsch"}
         };
+    }
+
+    public class NoteList {
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
+        public string Message { get; set; }
+        public DateTime Timestamp { get; set; } = DateTime.Now;
+    }
+
+
+    public class DeviceList {
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
+        [Indexed(Name = "UI_NameId", Unique = true)]
+        public string Name { get; set; }
+        public string Address { get; set; }
+        public DateTime Timestamp { get; set; } = DateTime.Now;
     }
 }

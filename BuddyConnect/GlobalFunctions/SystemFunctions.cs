@@ -14,39 +14,39 @@ namespace BuddyConnect.Functions
             if (mergedDictionaries != null) { mergedDictionaries.Clear(); }
 
             //Load from DB
-            if (string.IsNullOrWhiteSpace(theme) && App.AppSetting.Theme == null) {
+            if (string.IsNullOrWhiteSpace(theme) && App.appSetting.Theme == null) {
                 theme = (await SettingListController.LoadSettingListThemeStartup()).Value;
                 change = false;
                 //Load from Setting
             }
-            else if (string.IsNullOrWhiteSpace(theme) && App.AppSetting.Theme != null && !change) {
-                theme = App.AppSetting.Theme;
+            else if (string.IsNullOrWhiteSpace(theme) && App.appSetting.Theme != null && !change) {
+                theme = App.appSetting.Theme;
 
                 //change Theme
             }
-            else if (string.IsNullOrWhiteSpace(theme) && App.AppSetting.Theme != null && change) {
-                theme = App.AppSetting.Theme;
+            else if (string.IsNullOrWhiteSpace(theme) && App.appSetting.Theme != null && change) {
+                theme = App.appSetting.Theme;
             }
 
             if (!change) {
                 switch (theme) {
                     case "Light":
-                        theme = "Light"; translatedTheme = App.AppSetting.TranslatedTheme = AppResources.Dark;
+                        theme = "Light"; translatedTheme = App.appSetting.TranslatedTheme = AppResources.Dark;
                         mergedDictionaries.Add(new LightTheme()); break;
                     case "Dark":
                     default:
-                        theme = "Dark"; translatedTheme = App.AppSetting.TranslatedTheme = AppResources.Light;
+                        theme = "Dark"; translatedTheme = App.appSetting.TranslatedTheme = AppResources.Light;
                         mergedDictionaries.Add(new DarkTheme()); break;
                 }
             }
             else {
                 switch (theme) {
                     case "Light":
-                        theme = "Dark"; translatedTheme = App.AppSetting.TranslatedTheme = AppResources.Light;
+                        theme = "Dark"; translatedTheme = App.appSetting.TranslatedTheme = AppResources.Light;
                         mergedDictionaries.Add(new DarkTheme()); break;
                     case "Dark":
                     default:
-                        theme = "Light"; translatedTheme = App.AppSetting.TranslatedTheme = AppResources.Dark;
+                        theme = "Light"; translatedTheme = App.appSetting.TranslatedTheme = AppResources.Dark;
                         mergedDictionaries.Add(new LightTheme()); break;
                 }
                 await SettingListController.SetSelectedTheme(theme);
@@ -64,14 +64,14 @@ namespace BuddyConnect.Functions
             }
 
             //Save Selected Dictionary
-            App.AppSetting.Language = language;
+            App.appSetting.Language = language;
             await SettingListController.SetSelectedLanguage(language);
 
             //Set Selected Dictionary
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(language);
             AppResources.Culture = new CultureInfo(language);
 
-            return App.AppSetting.Language;
+            return App.appSetting.Language;
         }
     }
 }

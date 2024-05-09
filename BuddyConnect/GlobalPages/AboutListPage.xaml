@@ -20,13 +20,15 @@
                 x:Name="Heart"
                 HeightRequest="400" HorizontalOptions="Center" Source="heart.png" VerticalOptions="Center" WidthRequest="400" />
         </HorizontalStackLayout>
+
         
-            <Label FontSize="22" FontAttributes="Bold" Text="{x:Static language:AppResources.AppName}" VerticalOptions="End" />
+        <Label FontSize="22" FontAttributes="Bold" Text="{x:Static language:AppResources.AppName}" VerticalOptions="End" />
             <Label FontSize="22" Text="{x:Static language:AppResources.Version}" VerticalOptions="End" />
 
 
         <Label Text="{x:Static language:AppResources.AppDescription}" />
-        <Button Text="{x:Static language:AppResources.OpenWebsite}" Clicked="LearnMore_Clicked" />
+        <Button Text="{x:Static language:AppResources.OpenWebsite}" Clicked="LearnMore_Clicked"
+                BackgroundColor="{DynamicResource PrimaryButtonBackgroundColor}" TextColor="{DynamicResource PrimaryButtonTextColor}"/>
     </VerticalStackLayout>
     
     

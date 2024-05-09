@@ -126,6 +126,12 @@
   <data name="AddNote" xml:space="preserve">
     <value>Vložit Poznámku</value>
   </data>
+  <data name="Address" xml:space="preserve">
+    <value>Adresa</value>
+  </data>
+  <data name="AnyDeviceFound" xml:space="preserve">
+    <value>Žádná jednotka nenalezena</value>
+  </data>
   <data name="AppDescription" xml:space="preserve">
     <value>Popis Aplikace</value>
   </data>
@@ -135,8 +141,14 @@
   <data name="AppName" xml:space="preserve">
     <value>Buddy Connect</value>
   </data>
+  <data name="BtStatus" xml:space="preserve">
+    <value>Stav BlueTooth</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Zrušit</value>
+  </data>
+  <data name="Connected" xml:space="preserve">
+    <value>Připojeno</value>
   </data>
   <data name="Czech" xml:space="preserve">
     <value>Česky</value>
@@ -150,8 +162,20 @@
   <data name="Deutsch" xml:space="preserve">
     <value>Deutsch</value>
   </data>
+  <data name="DeviceName" xml:space="preserve">
+    <value>Název jednotky</value>
+  </data>
+  <data name="EnableBt" xml:space="preserve">
+    <value>Zapněte BluetTooth</value>
+  </data>
   <data name="English" xml:space="preserve">
     <value>English</value>
+  </data>
+  <data name="FoudedDevices" xml:space="preserve">
+    <value>Nalezené Jednotky</value>
+  </data>
+  <data name="FoundedDevices" xml:space="preserve">
+    <value>Nalezené Jednotky</value>
   </data>
   <data name="Language" xml:space="preserve">
     <value>Jazyk</value>
@@ -171,14 +195,29 @@
   <data name="News" xml:space="preserve">
     <value>Novinky</value>
   </data>
+  <data name="NotAvailable" xml:space="preserve">
+    <value>Nenalezeno</value>
+  </data>
   <data name="Notes" xml:space="preserve">
     <value>Poznámky</value>
+  </data>
+  <data name="Off" xml:space="preserve">
+    <value>Vypnuto</value>
+  </data>
+  <data name="On" xml:space="preserve">
+    <value>Zapnuto</value>
   </data>
   <data name="OpenWebsite" xml:space="preserve">
     <value>Otevřít webové stránky</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Uložit</value>
+  </data>
+  <data name="ScanTimeout" xml:space="preserve">
+    <value>Scan Timeout</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Vyhledat</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Nastavení</value>
@@ -187,12 +226,15 @@
     <value>1.0.0</value>
   </data>
   <data name="WebsiteUrl" xml:space="preserve">
-    <value>https://kliknetezde.cz</value>
+    <value>https://kliknetezde.cz/webbt/</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Vítejte</value>
   </data>
   <data name="WriteNoteHere" xml:space="preserve">
     <value>Zapište si poznámku</value>
+  </data>
+  <data name="YourNotes" xml:space="preserve">
+    <value>Vaše Poznámky</value>
   </data>
 </root>

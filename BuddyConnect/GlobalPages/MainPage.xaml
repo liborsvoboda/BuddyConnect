@@ -8,41 +8,55 @@
     xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     BackgroundColor="{DynamicResource PageBackgroundColor}"
-    Shell.NavBarHasShadow="true"
-    Shell.PresentationMode="ModalAnimated"
-    AutomationId="AppName"
     >
 
-    <ScrollView>
+    <ScrollView VerticalOptions="Start">
         <VerticalStackLayout
-            Padding="30,0"
-            Spacing="25" VerticalOptions="Center">
+            Padding="5,20,5,5" Spacing="5" VerticalOptions="Start">
 
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="1.0*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.7*" />
+                    <ColumnDefinition Width="0.3*" />
+                    
+                </Grid.ColumnDefinitions>
 
             
             
-            <local:WinUIRatingControl x:Name="ratingControl" />
+                <Label Grid.Row="0" Grid.Column="0" FontSize="32" HorizontalOptions="Start" Text="{x:Static language:AppResources.BtStatus}" />
 
-            <Label HorizontalOptions="Center" Text="{Binding Value, Source={Reference ratingControl}}" />
+                <Button x:Name="bt_button" Grid.Row="0" Grid.Column="1" IsVisible="False"
+                    Text="{x:Static language:AppResources.Search}" Clicked="BtButton_Clicked"
+                    BackgroundColor="{DynamicResource PrimaryButtonBackgroundColor}"
+                    TextColor="{DynamicResource PrimaryButtonTextColor}"/>
 
-            <Stepper
-                HorizontalOptions="Center" Maximum="5" Minimum="-1"
-                Value="{Binding Value, Source={Reference ratingControl}}" />
+                <Label x:Name="bt_status" Grid.Row="1" Grid.Column="0" HorizontalOptions="Start" FontSize="32" />
 
-            <Image
-                HeightRequest="200" HorizontalOptions="Center" SemanticProperties.Description="Cute dot net bot waving hi to you!" Source="dotnet_bot.png" />
+            
+                <!--NONE OR TABLE-->
+            </Grid>
+            <Label x:Name="lb_none" Grid.Row="2" Grid.Column="0" IsVisible="False" Text="{x:Static language:AppResources.AnyDeviceFound}" HorizontalOptions="Center"/>
+                <VerticalStackLayout HorizontalOptions="CenterAndExpand" x:Name="deviceTable" Grid.Row="2" Grid.Column="0" IsVisible="False">
+                    <TableView VerticalOptions="CenterAndExpand">
+                        <TableRoot>
+                            <TableSection x:Name="deviceList"></TableSection>
+                        </TableRoot>
+                    </TableView>
+                </VerticalStackLayout>
 
-            <Label
-                FontSize="32" HorizontalOptions="Center" SemanticProperties.HeadingLevel="Level1" Text="Buddy Connect" />
 
-            <Label
-                FontSize="18" HorizontalOptions="Center" SemanticProperties.Description="Welcome to dot net Multi platform App U I" SemanticProperties.HeadingLevel="Level2" Text="Welcome to .NET Multi-platform App UI" />
-
-            <Button
-                x:Name="CounterBtn"
-                Clicked="OnCounterClicked" HorizontalOptions="Center" SemanticProperties.Hint="Counts the number of times you click" Text="Click me" />
+                <!--Page Indicator-->
+                <ActivityIndicator x:Name="aiLoading" HorizontalOptions="Center" VerticalOptions="Center"
+                                   HeightRequest="100" WidthRequest="100" IsRunning="False" />
 
         </VerticalStackLayout>
+        
     </ScrollView>
 
 </ContentPage>

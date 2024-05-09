@@ -1,54 +1,35 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage 
-            x:Class="BuddyConnect.NoteListPage"
-            xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+<ContentPage
+    x:Class="BuddyConnect.NoteListPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:language="clr-namespace:BuddyConnect.Resources.Languages"
+    xmlns:local="clr-namespace:BuddyConnect"
+    xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    Title="{x:Static language:AppResources.Notes}"
+    BackgroundColor="{DynamicResource PageBackgroundColor}">
 
-            xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
-            xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-
-            xmlns:language="clr-namespace:BuddyConnect.Resources.Languages"
-            xmlns:local="clr-namespace:BuddyConnect"
-
-            Title="{x:Static language:AppResources.Notes}"
-            BackgroundColor="{DynamicResource PageBackgroundColor}"
-            >
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="{x:Static language:AppResources.Add}" Clicked="AddNote_Clicked" IconImageSource="{FontImage Glyph='+', Color=Black, Size=22}" />
+        <ToolbarItem
+            Clicked="AddNote_Clicked"
+            IconImageSource="{FontImage Glyph='+',
+                                        Color=Black,
+                                        Size=22}"
+            Text="{x:Static language:AppResources.Add}" />
     </ContentPage.ToolbarItems>
 
-    <!-- Display notes in a list -->
-    <CollectionView x:Name="notesCollection"
-                        Margin="20"
-                        SelectionMode="Single"
-                        SelectionChanged="notesCollection_SelectionChanged">
 
-        <CollectionView.ItemsLayout>
-        <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
-        </CollectionView.ItemsLayout>
-        <CollectionView.ItemTemplate>
-            <DataTemplate>
-                <StackLayout>
-                    <Label Text="{Binding Text}" FontSize="22"/>
-                    <Label Text="{Binding Date}" FontSize="14" TextColor="Silver"/>
-                </StackLayout>
-            </DataTemplate>
-        </CollectionView.ItemTemplate>
-    </CollectionView>
-    
-    <!--<VerticalStackLayout Spacing="10" Margin="5">
-        <Editor x:Name="TextEditor"
-                Placeholder="{x:Static language:AppResources.WriteNoteHere}"
-                Text="{Binding Text}"
-                HeightRequest="100" />
 
-        <Grid ColumnDefinitions="*,*" ColumnSpacing="4">
-            <Button Text="{x:Static language:AppResources.Save}"
-                    Clicked="SaveButton_Clicked" />
+    <!--  Display notes in a list  -->
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="5"
+            Spacing="25" VerticalOptions="Start">
+            <TableView Intent="Menu">
+                <TableRoot x:Name="noteTable" />
+            </TableView>
+        </VerticalStackLayout>
+    </ScrollView>
 
-            <Button Grid.Column="1"
-                    Text="{x:Static language:AppResources.Delete}"
-                    Clicked="DeleteButton_Clicked" />
-        </Grid>
-    </VerticalStackLayout>-->
 </ContentPage>

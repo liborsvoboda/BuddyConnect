@@ -1,23 +1,21 @@
 using BuddyConnect.Resources.Languages;
 using BuddyConnect.Controls;
 using System.Linq;
+using System.Globalization;
+using BuddyConnect.DatabaseModel;
+using BuddyConnect.Controllers;
 
 
 namespace BuddyConnect;
 
 
-public partial class NoteListPage : ContentPage, IModalPage
+public partial class NoteListPage : ContentPage, GlobalServices
 {
 
     public NoteListPage() {
 
         InitializeComponent();
         _ = LoadStartUpData();
-
-        string appDataPath = FileSystem.AppDataDirectory;
-        string randomFileName = $"{Path.GetRandomFileName()}.notes.txt";
-
-        LoadNote(Path.Combine(appDataPath, randomFileName));
     }
 
 
@@ -25,21 +23,13 @@ public partial class NoteListPage : ContentPage, IModalPage
 
 
     public async Task<bool> LoadStartUpData() {
-        App.AppSetting.Notes = new AllNotes().Notes;
-        notesCollection.ItemsSource = App.AppSetting.Notes;
+        noteTable.Clear();
+        var table = new TableSection(AppResources.ResourceManager.GetString("YourNotes", new CultureInfo(App.appSetting.Language)));
+        App.appSetting.Notes.ForEach(note => { table.Add(new TextCell() { Text = note.Timestamp.ToString(), Detail = note.Message }); });
+        noteTable.Add(table);
         return true;
     }
 
-
-    private void LoadNote(string fileName) {
-        Note noteModel = new Note { Filename = fileName };
-
-        if (File.Exists(fileName)) {
-            noteModel.Date = File.GetCreationTime(fileName);
-            noteModel.Text = File.ReadAllText(fileName);
-        }
-        BindingContext = noteModel;
-    }
 
 
     //private async void DeleteButton_Clicked(object sender, EventArgs e) {
@@ -50,14 +40,15 @@ public partial class NoteListPage : ContentPage, IModalPage
     private async void AddNote_Clicked(object sender, EventArgs e) {
         string action = await DisplayPromptAsync(AppResources.AddNote, null, AppResources.Save, AppResources.Cancel, AppResources.WriteNoteHere, -1, null, "");
         if (action != null) {
-            if (BindingContext is Note note) { File.WriteAllText(note.Filename, action); }
-            LoadStartUpData();
+            await NoteListController.InsertOrUpdateNoteList(new NoteList() { Message = action });
+            App.appSetting.Notes = await NoteListController.GetNoteList();
+            await LoadStartUpData();
         }
     }
 
-    private async void notesCollection_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-        if (e.CurrentSelection.Count != 0) {
-            var note = (Note)e.CurrentSelection[0];
-        }
-    }
+    //private async void notesCollection_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+    //    if (e.CurrentSelection.Count != 0) {
+    //        var note = (Note)e.CurrentSelection[0];
+    //    }
+    //}
 }

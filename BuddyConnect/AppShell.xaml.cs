@@ -55,6 +55,11 @@ public partial class AppShell : Shell
                 selectedMenu.Text = AppResources.AppName;
             }
 
+            if (((Shell)App.Current.MainPage).CurrentPage.GetType().Name == typeof(WebViewPage).Name) {
+                ((WebViewPage)((Shell)((Shell)App.Current.MainPage).Items.First(a => a.CurrentItem.Route.Contains(typeof(WebViewPage).Name)).CurrentItem.Window.Page).CurrentPage).LoadStartUpData();
+                selectedMenu.Text = AppResources.News;
+            }
+
             if (((Shell)App.Current.MainPage).CurrentPage.GetType().Name == typeof(NewsListPage).Name) {
                 ((NewsListPage)((Shell)((Shell)App.Current.MainPage).Items.First(a => a.CurrentItem.Route.Contains(typeof(NewsListPage).Name)).CurrentItem.Window.Page).CurrentPage).LoadStartUpData();
                 selectedMenu.Text = AppResources.News;
@@ -80,11 +85,11 @@ public partial class AppShell : Shell
 
     //Change/Set  Translated Page Name
     private void SetTranslatedTitle() {
-        WelcomePage.Title = AppResources.ResourceManager.GetString("Welcome", new CultureInfo(App.AppSetting.Language));
-        MainPage.Title = AppResources.ResourceManager.GetString("AppName", new CultureInfo(App.AppSetting.Language));
-        NewsListPage.Title = AppResources.ResourceManager.GetString("News", new CultureInfo(App.AppSetting.Language));
-        SettingListPage.Title = AppResources.ResourceManager.GetString("Settings", new CultureInfo(App.AppSetting.Language));
-        NoteListPage.Title = AppResources.ResourceManager.GetString("Notes", new CultureInfo(App.AppSetting.Language));
-        AboutListPage.Title = AppResources.ResourceManager.GetString("About", new CultureInfo(App.AppSetting.Language));
+        WelcomePage.Title = AppResources.ResourceManager.GetString("Welcome", new CultureInfo(App.appSetting.Language));
+        MainPage.Title = AppResources.ResourceManager.GetString("AppName", new CultureInfo(App.appSetting.Language));
+        NewsListPage.Title = AppResources.ResourceManager.GetString("News", new CultureInfo(App.appSetting.Language));
+        SettingListPage.Title = AppResources.ResourceManager.GetString("Settings", new CultureInfo(App.appSetting.Language));
+        NoteListPage.Title = AppResources.ResourceManager.GetString("Notes", new CultureInfo(App.appSetting.Language));
+        AboutListPage.Title = AppResources.ResourceManager.GetString("About", new CultureInfo(App.appSetting.Language));
     }
 }

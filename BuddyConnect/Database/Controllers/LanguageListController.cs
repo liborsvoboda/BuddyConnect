@@ -12,26 +12,26 @@ namespace BuddyConnect.Controllers {
     public static class LanguageListController {
 
         public static async Task<List<LanguageList>> GetLanguageList() {
-            return await App.AppSetting.Database.Table<LanguageList>().ToListAsync();
+            return await App.appSetting.Database.Table<LanguageList>().ToListAsync();
         }
 
 
         public static async Task<LanguageList> GetLanguageListByLanguage(string language) {
-            return await App.AppSetting.Database.Table<LanguageList>().Where(i => i.Language == language).FirstOrDefaultAsync();
+            return await App.appSetting.Database.Table<LanguageList>().Where(i => i.Language == language).FirstOrDefaultAsync();
         }
 
 
         //public static async Task<int> SaveLanguageList(LanguageList item) {
         //    if (item.Id != 0) {
-        //        return await App.AppSetting.Database.UpdateAsync(item);
+        //        return await App.appSetting.Database.UpdateAsync(item);
         //    }
-        //    else { return await App.AppSetting.Database.InsertAsync(item); }
+        //    else { return await App.appSetting.Database.InsertAsync(item); }
         //}
 
 
         public static async Task<int> SaveLanguageList(LanguageList item) {
             try {
-                return await App.AppSetting.Database.InsertAsync(item);
+                return await App.appSetting.Database.InsertAsync(item);
             } catch (Exception ex) { Debug.WriteLine(ex); }
             return 0;
         }
@@ -39,7 +39,7 @@ namespace BuddyConnect.Controllers {
 
         public static async Task<int> SaveLanguageListRange(List<LanguageList> item) {
             try { 
-                return await App.AppSetting.Database.InsertAllAsync(item);
+                return await App.appSetting.Database.InsertAllAsync(item);
             } catch (Exception ex) { Debug.WriteLine(ex); }
             return 0;
         }

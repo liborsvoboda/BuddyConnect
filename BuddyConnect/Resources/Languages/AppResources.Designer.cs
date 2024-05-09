@@ -88,6 +88,24 @@ namespace BuddyConnect.Resources.Languages {
         }
         
         /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Adresa.
+        /// </summary>
+        public static string Address {
+            get {
+                return ResourceManager.GetString("Address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Žádná jednotka nenalezena.
+        /// </summary>
+        public static string AnyDeviceFound {
+            get {
+                return ResourceManager.GetString("AnyDeviceFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Vyhledá lokalizovaný řetězec podobný Popis Aplikace.
         /// </summary>
         public static string AppDescription {
@@ -115,11 +133,29 @@ namespace BuddyConnect.Resources.Languages {
         }
         
         /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Stav BlueTooth.
+        /// </summary>
+        public static string BtStatus {
+            get {
+                return ResourceManager.GetString("BtStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Vyhledá lokalizovaný řetězec podobný Zrušit.
         /// </summary>
         public static string Cancel {
             get {
                 return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Připojeno.
+        /// </summary>
+        public static string Connected {
+            get {
+                return ResourceManager.GetString("Connected", resourceCulture);
             }
         }
         
@@ -160,11 +196,47 @@ namespace BuddyConnect.Resources.Languages {
         }
         
         /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Název jednotky.
+        /// </summary>
+        public static string DeviceName {
+            get {
+                return ResourceManager.GetString("DeviceName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Zapněte BluetTooth.
+        /// </summary>
+        public static string EnableBt {
+            get {
+                return ResourceManager.GetString("EnableBt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Vyhledá lokalizovaný řetězec podobný English.
         /// </summary>
         public static string English {
             get {
                 return ResourceManager.GetString("English", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Nalezené Jednotky.
+        /// </summary>
+        public static string FoudedDevices {
+            get {
+                return ResourceManager.GetString("FoudedDevices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Nalezené Jednotky.
+        /// </summary>
+        public static string FoundedDevices {
+            get {
+                return ResourceManager.GetString("FoundedDevices", resourceCulture);
             }
         }
         
@@ -223,11 +295,38 @@ namespace BuddyConnect.Resources.Languages {
         }
         
         /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Nenalezeno.
+        /// </summary>
+        public static string NotAvailable {
+            get {
+                return ResourceManager.GetString("NotAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Vyhledá lokalizovaný řetězec podobný Poznámky.
         /// </summary>
         public static string Notes {
             get {
                 return ResourceManager.GetString("Notes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Vypnuto.
+        /// </summary>
+        public static string Off {
+            get {
+                return ResourceManager.GetString("Off", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Zapnuto.
+        /// </summary>
+        public static string On {
+            get {
+                return ResourceManager.GetString("On", resourceCulture);
             }
         }
         
@@ -250,6 +349,24 @@ namespace BuddyConnect.Resources.Languages {
         }
         
         /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Scan Timeout.
+        /// </summary>
+        public static string ScanTimeout {
+            get {
+                return ResourceManager.GetString("ScanTimeout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Vyhledat.
+        /// </summary>
+        public static string Search {
+            get {
+                return ResourceManager.GetString("Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Vyhledá lokalizovaný řetězec podobný Nastavení.
         /// </summary>
         public static string Settings {
@@ -268,7 +385,7 @@ namespace BuddyConnect.Resources.Languages {
         }
         
         /// <summary>
-        ///   Vyhledá lokalizovaný řetězec podobný https://kliknetezde.cz.
+        ///   Vyhledá lokalizovaný řetězec podobný https://kliknetezde.cz/webbt/.
         /// </summary>
         public static string WebsiteUrl {
             get {
@@ -291,6 +408,15 @@ namespace BuddyConnect.Resources.Languages {
         public static string WriteNoteHere {
             get {
                 return ResourceManager.GetString("WriteNoteHere", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Vaše Poznámky.
+        /// </summary>
+        public static string YourNotes {
+            get {
+                return ResourceManager.GetString("YourNotes", resourceCulture);
             }
         }
     }

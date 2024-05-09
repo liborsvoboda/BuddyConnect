@@ -12,25 +12,25 @@ namespace BuddyConnect.Controllers {
     public class SettingListController {
 
         public static async Task<List<SettingList>> GetSettingList() {
-            return await App.AppSetting.Database.Table<SettingList>().ToListAsync();
+            return await App.appSetting.Database.Table<SettingList>().ToListAsync();
         }
 
 
         public static async Task<SettingList> GetSettingListByKey(string key) {
-            return await App.AppSetting.Database.Table<SettingList>().Where(i => i.Key == key).FirstOrDefaultAsync();
+            return await App.appSetting.Database.Table<SettingList>().Where(i => i.Key == key).FirstOrDefaultAsync();
         }
 
 
         //public static async Task<int> SaveSettingList(SettingList item) {
         //    if (item.Id != 0) {
-        //        return await App.AppSetting.Database.UpdateAsync(item);
+        //        return await App.appSetting.Database.UpdateAsync(item);
         //    }
-        //    else { return await App.AppSetting.Database.InsertAsync(item); }
+        //    else { return await App.appSetting.Database.InsertAsync(item); }
         //}
 
         public static async Task<int> SaveSettingList(SettingList item) {
             try { 
-                return await App.AppSetting.Database.InsertAsync(item);
+                return await App.appSetting.Database.InsertAsync(item);
             } 
             catch (Exception ex) { Debug.WriteLine(ex); }
             return 0;
@@ -39,7 +39,7 @@ namespace BuddyConnect.Controllers {
 
         public static async Task<int> SaveSettingListRange(List<SettingList> item) {
             try { 
-                return await App.AppSetting.Database.InsertAllAsync(item);
+                return await App.appSetting.Database.InsertAllAsync(item);
             } 
             catch (Exception ex) { Debug.WriteLine(ex); }
             return 0;
@@ -50,19 +50,19 @@ namespace BuddyConnect.Controllers {
 
 
         public static async Task<SettingList> LoadSettingListThemeStartup() {
-            return await App.AppSetting.Database.Table<SettingList>().Where(i => i.Key == "Theme").FirstOrDefaultAsync();
+            return await App.appSetting.Database.Table<SettingList>().Where(i => i.Key == "Theme").FirstOrDefaultAsync();
         }
 
         public static async Task<SettingList> LoadSettingListLanguageStartup() {
-            return await App.AppSetting.Database.Table<SettingList>().Where(i => i.Key == "Language").FirstOrDefaultAsync();
+            return await App.appSetting.Database.Table<SettingList>().Where(i => i.Key == "Language").FirstOrDefaultAsync();
         }
 
 
         public static async Task<int> SetSelectedLanguage(string language) {
             try { 
                 SettingList selectedLanguage = new() { Key = "Language", Value = language };
-                App.AppSetting.Language = language;
-                return await App.AppSetting.Database.UpdateAsync(selectedLanguage);
+                App.appSetting.Language = language;
+                return await App.appSetting.Database.UpdateAsync(selectedLanguage);
             } catch (Exception ex) { Debug.WriteLine(ex); }
             return 0;
         }
@@ -71,9 +71,9 @@ namespace BuddyConnect.Controllers {
         public static async Task<int> SetSelectedTheme(string theme) {
             try { 
                 SettingList selectedTheme = new SettingList() { Key = "Theme", Value = theme };
-                App.AppSetting.Theme = theme;
-                App.AppSetting.TranslatedTheme = AppResources.ResourceManager.GetString(theme);
-                return await App.AppSetting.Database.UpdateAsync(selectedTheme);
+                App.appSetting.Theme = theme;
+                App.appSetting.TranslatedTheme = AppResources.ResourceManager.GetString(theme);
+                return await App.appSetting.Database.UpdateAsync(selectedTheme);
             } catch (Exception ex) { Debug.WriteLine(ex); }
             return 0;
         }

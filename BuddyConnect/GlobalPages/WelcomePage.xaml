@@ -6,13 +6,14 @@
     xmlns:language="clr-namespace:BuddyConnect.Resources.Languages"
     xmlns:local="clr-namespace:BuddyConnect"
     Title="{x:Static language:AppResources.AppName}"
-    BackgroundColor="{DynamicResource PageBackgroundColor}">
+    BackgroundColor="{DynamicResource PageBackgroundColor}"
+    >
 
     <ScrollView>
         <Grid BackgroundColor="{DynamicResource TransparentBackgroundColor}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.15*" />
-                <RowDefinition Height="0.7*" />
+                <RowDefinition Height="0.6*" />
                 <RowDefinition Height="0.15*" />
             </Grid.RowDefinitions>
 
@@ -25,16 +26,13 @@
 
             <Image
                 x:Name="Heart" Grid.Row="1"
-                HeightRequest="400" HorizontalOptions="Center" Source="heart.png" VerticalOptions="Center" WidthRequest="400" />
+                HeightRequest="350" HorizontalOptions="Center" Source="heart.png" VerticalOptions="Center" WidthRequest="400" />
 
             <Label
-                x:Name="label"
-                Grid.Row="2"
+                x:Name="label" Grid.Row="2"
                 FontAttributes="Bold" FontSize="50" HorizontalTextAlignment="Center"
-                Style="{StaticResource LargeLabelStyle}"
-                Text="{x:Static language:AppResources.Loading}"
-                TextColor="DodgerBlue" VerticalTextAlignment="Center" />
-
+                Style="{StaticResource LargeLabelStyle}" Text="{x:Static language:AppResources.Loading}"
+                TextColor="DodgerBlue" VerticalTextAlignment="Start" />
 
         </Grid>
     </ScrollView>

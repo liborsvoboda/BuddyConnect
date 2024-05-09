@@ -1,4 +1,5 @@
-﻿using SQLite;
+﻿using Plugin.BLE;
+using SQLite;
 
 namespace BuddyConnect;
 
@@ -6,12 +7,22 @@ public partial class App : Application {
 
 
 	//Central Declaration
-    public static AppSetting AppSetting = new AppSetting();
+    public static AppSetting appSetting;
 
 
-    public App()
-	{
+    public App(IServiceProvider provider) {
+
         InitializeComponent();
+        
+        appSetting = new AppSetting();
         MainPage = new AppShell();
-	}
+
+        //Service Provider
+        App.appSetting.ServiceProvider = provider;
+
+        //BlueTooth Init
+        App.appSetting.BlueTooth = new BlueTooth();
+        App.appSetting.BlueTooth.Bluetooth = CrossBluetoothLE.Current;
+        App.appSetting.BlueTooth.BtAdapter = App.appSetting.BlueTooth.Bluetooth.Adapter;
+    }
 }

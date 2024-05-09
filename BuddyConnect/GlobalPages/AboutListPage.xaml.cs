@@ -3,7 +3,7 @@ using BuddyConnect.Functions;
 
 namespace BuddyConnect
 {
-    public partial class AboutListPage : ContentPage, IModalPage {
+    public partial class AboutListPage : ContentPage, GlobalServices {
 
 
         public AboutListPage() {

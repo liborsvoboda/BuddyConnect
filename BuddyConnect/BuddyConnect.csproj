@@ -31,6 +31,10 @@
 		<DefaultLanguage>cs</DefaultLanguage>
 	</PropertyGroup>
 
+  <PropertyGroup>
+    <EnableLLVM>False</EnableLLVM>
+  </PropertyGroup>
+  
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-ios|AnyCPU'">
 	  <ApplicationTitle>BuddyConnect</ApplicationTitle>
 	  <ApplicationId>com.companyname.BuddyConnect</ApplicationId>
@@ -106,9 +110,13 @@
 	  <PackageReference Include="CommunityToolkit.Maui" Version="7.0.1" />
 	  <PackageReference Include="CommunityToolkit.Maui.Core" Version="7.0.1" />
 	  <PackageReference Include="CommunityToolkit.Maui.MediaElement" Version="3.1.0" />
-	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 	  <PackageReference Include="IeuanWalker.Maui.Switch" Version="1.0.4" />
 	  <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+	  <PackageReference Include="Microsoft.Maui.Controls.Build.Tasks" Version="8.0.7" />
+	  <PackageReference Include="Microsoft.Maui.Controls.Core" Version="8.0.7" />
+	  <PackageReference Include="Microsoft.Maui.Controls.Xaml" Version="8.0.7" />
+	  <PackageReference Include="Microsoft.Maui.Core" Version="8.0.7" />
+	  <PackageReference Include="Plugin.BLE" Version="3.0.0" />
 	  <PackageReference Include="SimpleToolkit.Core" Version="4.0.0" />
 	  <PackageReference Include="sqlite-net-pcl" Version="1.9.172" />
 	  <PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.8" />
@@ -132,6 +140,9 @@
 	  </Compile>
 	  <Compile Update="GlobalPages\SettingListPage.xaml.cs">
 	    <DependentUpon>SettingListPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="GlobalPages\WebViewPage.cs">
+	    <DependentUpon>%(Filename)</DependentUpon>
 	  </Compile>
 	  <Compile Update="Resources\Languages\AppResources.Designer.cs">
 	    <DesignTime>True</DesignTime>
@@ -184,6 +195,14 @@
 	  <MauiXaml Update="example\UserSummaryPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Update="Microsoft.Maui.Controls" Version="8.0.21" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Update="Microsoft.Maui.Controls.Compatibility" Version="8.0.21" />
 	</ItemGroup>
 
 </Project>

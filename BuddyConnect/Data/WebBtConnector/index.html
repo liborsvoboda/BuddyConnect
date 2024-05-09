@@ -1,0 +1,103 @@
+<html>
+<head>
+    <!-- https://vyvoj.ctgroup.cz/dvbt/ -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BLE</title>
+    <!-- CSS only -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/all.css">
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">Ble Scanner v1.0.5</span>
+        </div>
+    </nav>
+    <div role="main" class="container-fluid">
+        <div class="row">
+            <div class="sidebar col-4  col-md-4 col-lg-2">
+                <div class="d-flex align-items-center justify-content-center">
+                    <button id="connect" type="submit" class="btn btn-dark my-2" style="display: none;">
+                        <i class="fab fa-bluetooth"></i>Connect
+                    </button>
+                    <button id="disconnect" type="submit" class="btn btn-danger my-2" style="display:none">
+                        <i class="fab fa-bluetooth"></i>Disconnect
+                    </button>
+                    <div id="spinner" class="loader" style="display: none;"></div>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button id="log" class="btn btn-dark mb-2" data-bs-toggle="modal" data-bs-target="#log-content">
+                        Show
+                        Logs
+                    </button>
+                </div>
+                <div class="form-group">
+                    <label for="setShortname" class="text-light" id="title-shortname">Shortname</label>
+                    <input type="text" class="form-control" id="set-shortname">
+                </div>
+                <div class="d-flex justify-content-center mt-3">
+                    <button class="btn btn-dark" id="format-button">Format Device</button>
+                </div>
+            </div>
+            <div class="main col-8 col-md-8 col-lg-10">
+                <div class="alert alert-danger m-2 text-center" role="alert" id="bluetooth-is-available"
+                     style="display:none">
+                    <b><span>This browser does not support bluetooth connection. Try Chrome, Opera or Edge</span></b>
+                </div>
+                <div id="table-container">
+                    <table class="table table-striped" id="table">
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Length</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="log-content" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Logs</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="log-info">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2 -->
+    <div class="modal fade" id="file-content" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="file-title modal-title" id="exampleModalLabel2"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <textarea style="display: none;" id="file-info" cols="52" rows="10"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button id="save" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Save</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/ble.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+</html>
