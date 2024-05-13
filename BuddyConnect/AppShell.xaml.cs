@@ -48,35 +48,35 @@ public partial class AppShell : Shell
     //Before Navigation Change
     //Update Or Load Data For Show On Page
     //Central Control Over EachPage LoadStartupData on Page Selection
-    private void AfterNavigationChanged(object sender, ShellNavigatedEventArgs e) {
+    private async void AfterNavigationChanged(object sender, ShellNavigatedEventArgs e) {
         try {
-            if (((Shell)App.Current.MainPage).CurrentPage.GetType().Name == typeof(MainPage).Name) {
-                ((MainPage)((Shell)((Shell)App.Current.MainPage).Items.First(a => a.CurrentItem.Route.Contains(typeof(MainPage).Name)).CurrentItem.Window.Page).CurrentPage).LoadStartUpData();
-                selectedMenu.Text = AppResources.AppName;
+            if (((Shell)App.Current.MainPage).CurrentPage.GetType().Name == typeof(DeviceManagementPage).Name) {
+                await ((DeviceManagementPage)((Shell)((Shell)App.Current.MainPage).Items.First(a => a.CurrentItem.Route.Contains(typeof(DeviceManagementPage).Name)).CurrentItem.Window.Page).CurrentPage).LoadStartUpData();
+                selectedMenu.Text = AppResources.DeviceManagement;
             }
 
             if (((Shell)App.Current.MainPage).CurrentPage.GetType().Name == typeof(WebViewPage).Name) {
-                ((WebViewPage)((Shell)((Shell)App.Current.MainPage).Items.First(a => a.CurrentItem.Route.Contains(typeof(WebViewPage).Name)).CurrentItem.Window.Page).CurrentPage).LoadStartUpData();
-                selectedMenu.Text = AppResources.News;
+                await ((WebViewPage)((Shell)((Shell)App.Current.MainPage).Items.First(a => a.CurrentItem.Route.Contains(typeof(WebViewPage).Name)).CurrentItem.Window.Page).CurrentPage).LoadStartUpData();
+                selectedMenu.Text = AppResources.WebViewPage;
             }
 
             if (((Shell)App.Current.MainPage).CurrentPage.GetType().Name == typeof(NewsListPage).Name) {
-                ((NewsListPage)((Shell)((Shell)App.Current.MainPage).Items.First(a => a.CurrentItem.Route.Contains(typeof(NewsListPage).Name)).CurrentItem.Window.Page).CurrentPage).LoadStartUpData();
+                await ((NewsListPage)((Shell)((Shell)App.Current.MainPage).Items.First(a => a.CurrentItem.Route.Contains(typeof(NewsListPage).Name)).CurrentItem.Window.Page).CurrentPage).LoadStartUpData();
                 selectedMenu.Text = AppResources.News;
             }
 
             if (((Shell)App.Current.MainPage).CurrentPage.GetType().Name == typeof(SettingListPage).Name) {
-                ((SettingListPage)((Shell)((Shell)App.Current.MainPage).Items.First(a => a.CurrentItem.Route.Contains(typeof(SettingListPage).Name)).CurrentItem.Window.Page).CurrentPage).LoadStartUpData();
+                await ((SettingListPage)((Shell)((Shell)App.Current.MainPage).Items.First(a => a.CurrentItem.Route.Contains(typeof(SettingListPage).Name)).CurrentItem.Window.Page).CurrentPage).LoadStartUpData();
                 selectedMenu.Text = AppResources.Settings;
             }
 
             if (((Shell)App.Current.MainPage).CurrentPage.GetType().Name == typeof(NoteListPage).Name) {
-                ((NoteListPage)((Shell)((Shell)App.Current.MainPage).Items.First(a => a.CurrentItem.Route.Contains(typeof(NoteListPage).Name)).CurrentItem.Window.Page).CurrentPage).LoadStartUpData();
+                await ((NoteListPage)((Shell)((Shell)App.Current.MainPage).Items.First(a => a.CurrentItem.Route.Contains(typeof(NoteListPage).Name)).CurrentItem.Window.Page).CurrentPage).LoadStartUpData();
                 selectedMenu.Text = AppResources.Notes;
             }
             
             if (((Shell)App.Current.MainPage).CurrentPage.GetType().Name == typeof(AboutListPage).Name) {
-                ((AboutListPage)((Shell)((Shell)App.Current.MainPage).Items.First(a => a.CurrentItem.Route.Contains(typeof(AboutListPage).Name)).CurrentItem.Window.Page).CurrentPage).LoadStartUpData();
+                await ((AboutListPage)((Shell)((Shell)App.Current.MainPage).Items.First(a => a.CurrentItem.Route.Contains(typeof(AboutListPage).Name)).CurrentItem.Window.Page).CurrentPage).LoadStartUpData();
                 selectedMenu.Text = AppResources.About;
             }
             
@@ -86,7 +86,7 @@ public partial class AppShell : Shell
     //Change/Set  Translated Page Name
     private void SetTranslatedTitle() {
         WelcomePage.Title = AppResources.ResourceManager.GetString("Welcome", new CultureInfo(App.appSetting.Language));
-        MainPage.Title = AppResources.ResourceManager.GetString("AppName", new CultureInfo(App.appSetting.Language));
+        DeviceManagementPage.Title = AppResources.ResourceManager.GetString("DeviceManagement", new CultureInfo(App.appSetting.Language));
         NewsListPage.Title = AppResources.ResourceManager.GetString("News", new CultureInfo(App.appSetting.Language));
         SettingListPage.Title = AppResources.ResourceManager.GetString("Settings", new CultureInfo(App.appSetting.Language));
         NoteListPage.Title = AppResources.ResourceManager.GetString("Notes", new CultureInfo(App.appSetting.Language));

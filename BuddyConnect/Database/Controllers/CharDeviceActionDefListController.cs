@@ -6,19 +6,16 @@ using BuddyConnect.Functions;
 
 namespace BuddyConnect.Controllers {
 
-    /// <summary>
-    /// Table Controlers
-    /// LanguageList 
-    /// </summary>
-    public static class LanguageListController {
 
-        public static async Task<List<LanguageList>> GetLanguageList() {
-            return await App.appSetting.Database.Table<LanguageList>().ToListAsync();
+    public static class CharDeviceActionDefListController {
+
+        public static async Task<List<CharDeviceActionDefList>> GetCharDeviceActionDefList() {
+            return await App.appSetting.Database.Table<CharDeviceActionDefList>().ToListAsync();
         }
 
 
-        public static async Task<LanguageList> GetLanguageListByLanguage(string language) {
-            return await App.appSetting.Database.Table<LanguageList>().Where(i => i.Language == language).FirstOrDefaultAsync();
+        public static async Task<CharDeviceActionDefList> GetLanguageListByUuid(string uuid) {
+            return await App.appSetting.Database.Table<CharDeviceActionDefList>().Where(i => i.Uuid == uuid).FirstOrDefaultAsync();
         }
 
 
@@ -30,7 +27,7 @@ namespace BuddyConnect.Controllers {
         //}
 
 
-        public static async Task<int> SaveLanguageList(LanguageList item) {
+        public static async Task<int> SaveCharDeviceActionDefList(CharDeviceActionDefList item) {
             try {
                 return await App.appSetting.Database.InsertAsync(item);
             } catch (Exception ex) {
@@ -41,7 +38,7 @@ namespace BuddyConnect.Controllers {
         }
 
 
-        public static async Task<int> SaveLanguageListRange(List<LanguageList> item) {
+        public static async Task<int> SaveCharDeviceActionDefListRange(List<CharDeviceActionDefList> item) {
             try { 
                 return await App.appSetting.Database.InsertAllAsync(item);
             } catch (Exception ex) {

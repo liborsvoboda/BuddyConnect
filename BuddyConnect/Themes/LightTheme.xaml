@@ -8,13 +8,13 @@
     <Color x:Key="NavigationBarColor">WhiteSmoke</Color>
 
     <Color x:Key="MenuFlyoutColor">PeachPuff</Color>
-    
+
     <Color x:Key="PrimaryColor">Black</Color>
     <Color x:Key="SecondaryColor">WhiteSmoke</Color>
 
     <Color x:Key="PrimaryTextColor">Black</Color>
-    <Color x:Key="SecondaryTextColor">Black</Color>
-    
+    <Color x:Key="SecondaryTextColor">DarkGray</Color>
+
     <Color x:Key="PrimaryButtonBackgroundColor">#512BD4</Color>
     <Color x:Key="PrimaryButtonTextColor">White</Color>
 

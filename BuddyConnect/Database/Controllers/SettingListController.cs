@@ -2,6 +2,7 @@
 using BuddyConnect.DatabaseModel;
 using BuddyConnect.Resources.Languages;
 using System.Diagnostics;
+using BuddyConnect.Functions;
 
 namespace BuddyConnect.Controllers {
 
@@ -32,7 +33,10 @@ namespace BuddyConnect.Controllers {
             try { 
                 return await App.appSetting.Database.InsertAsync(item);
             } 
-            catch (Exception ex) { Debug.WriteLine(ex); }
+            catch (Exception ex) {
+                await DetectedErrorListController.SaveDetectedErrorList(new DetectedErrorList() { Message = SystemFunctions.GetSystemErrMessage(ex) });
+
+            }
             return 0;
         }
 
@@ -41,7 +45,10 @@ namespace BuddyConnect.Controllers {
             try { 
                 return await App.appSetting.Database.InsertAllAsync(item);
             } 
-            catch (Exception ex) { Debug.WriteLine(ex); }
+            catch (Exception ex) {
+                await DetectedErrorListController.SaveDetectedErrorList(new DetectedErrorList() { Message = SystemFunctions.GetSystemErrMessage(ex) });
+
+            }
             return 0;
         }
 
@@ -63,7 +70,10 @@ namespace BuddyConnect.Controllers {
                 SettingList selectedLanguage = new() { Key = "Language", Value = language };
                 App.appSetting.Language = language;
                 return await App.appSetting.Database.UpdateAsync(selectedLanguage);
-            } catch (Exception ex) { Debug.WriteLine(ex); }
+            } catch (Exception ex) { 
+                await DetectedErrorListController.SaveDetectedErrorList(new DetectedErrorList() { Message = SystemFunctions.GetSystemErrMessage(ex) });
+ 
+            }
             return 0;
         }
 
@@ -74,7 +84,10 @@ namespace BuddyConnect.Controllers {
                 App.appSetting.Theme = theme;
                 App.appSetting.TranslatedTheme = AppResources.ResourceManager.GetString(theme);
                 return await App.appSetting.Database.UpdateAsync(selectedTheme);
-            } catch (Exception ex) { Debug.WriteLine(ex); }
+            } catch (Exception ex) {
+                await DetectedErrorListController.SaveDetectedErrorList(new DetectedErrorList() { Message = SystemFunctions.GetSystemErrMessage(ex) });
+ 
+            }
             return 0;
         }
 

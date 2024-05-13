@@ -15,9 +15,10 @@ namespace BuddyConnect
 
             WebView webView = new WebView {
                 Source = new UrlWebViewSource {
-                    Url = "https://kliknetezde.cz/webbt/",
+                    Url = "https://kliknetezde.cz",
                 },
-                VerticalOptions = LayoutOptions.FillAndExpand
+                VerticalOptions = LayoutOptions.Fill,
+                HorizontalOptions = LayoutOptions.Fill
             };
 
             // Accomodate iPhone status bar.
@@ -27,7 +28,7 @@ namespace BuddyConnect
             this.Content = new StackLayout {
                 Children =
                 {
-                    header,
+                    //header,
                     webView
                 }
             };
@@ -41,10 +42,9 @@ namespace BuddyConnect
         }
 
         public async Task<bool> LoadStartUpData() {
-            //ti_themeSetting.Text = await SystemFunctions.ChangeorLoadTheme();
             return true;
         }
-        //   }
+       
 
     }
 }

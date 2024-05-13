@@ -1,5 +1,6 @@
 ﻿using SQLite;
 
+
 namespace BuddyConnect.DatabaseModel {
 
     /// <summary>
@@ -56,6 +57,64 @@ namespace BuddyConnect.DatabaseModel {
         [Indexed(Name = "UI_NameId", Unique = true)]
         public string Name { get; set; }
         public string Address { get; set; }
+        public DateTime Timestamp { get; set; } = DateTime.Now;
+    }
+
+
+    public class CharDeviceInfoDefList {
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
+        [Indexed(Name = "UI_CharNameId", Unique = true)]
+        public string CharName { get; set; }
+        public string Uuid { get; set; }
+        public DateTime Timestamp { get; set; } = DateTime.Now;
+    }
+
+
+    public class DefaultCharDeviceInfoDefList {
+        public static List<CharDeviceInfoDefList> DefaultItems = new List<CharDeviceInfoDefList>() {
+             new CharDeviceInfoDefList() { CharName = "Device Name" ,Uuid = null},
+             new CharDeviceInfoDefList() { CharName = "Model Number String" ,Uuid = null},
+             new CharDeviceInfoDefList() { CharName = "Manufacturer Name String" ,Uuid = null},
+             new CharDeviceInfoDefList() { CharName = "Serial Number String" ,Uuid = null},
+             new CharDeviceInfoDefList() { CharName = "Firmware Revision String" ,Uuid = null},
+             new CharDeviceInfoDefList() { CharName = "Hardware Revision String" ,Uuid = null},
+             new CharDeviceInfoDefList() { CharName = "Software Revision String" ,Uuid = null},
+             new CharDeviceInfoDefList() { CharName = "Dvb Serial Number" ,Uuid = "dbd00003-ff30-40a5-9ceb-a17358d31999"},
+             new CharDeviceInfoDefList() { CharName = "Dvb Short Name" ,Uuid = "dbd00002-ff30-40a5-9ceb-a17358d31999"}
+        };
+    }
+
+
+    public class CharDeviceActionDefList {
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
+        [Indexed(Name = "UI_NameId", Unique = true)]
+        public string Name { get; set; }
+        public string Uuid { get; set; }
+        public DateTime Timestamp { get; set; } = DateTime.Now;
+    }
+
+
+    public class DefaultCharDeviceActionDefList {
+        public static List<CharDeviceActionDefList> DefaultItems = new List<CharDeviceActionDefList>() {
+             //new CharDeviceActionDefList() { Name = "Dvb Serial Number", Uuid = "dbd00003-ff30-40a5-9ceb-a17358d31999" },
+             new CharDeviceActionDefList() { Name = "DvbService", Uuid = "dbd00001-ff30-40a5-9ceb-a17358d31999" },
+             new CharDeviceActionDefList() { Name = "DvbListFiles", Uuid = "dbd00010-ff30-40a5-9ceb-a17358d31999" },
+             //new CharDeviceActionDefList() { Name = "Short Name", Uuid = "dbd00002-ff30-40a5-9ceb-a17358d31999" },
+             new CharDeviceActionDefList() { Name = "DvbWriteToDevice", Uuid = "dbd00011-ff30-40a5-9ceb-a17358d31999" },
+             new CharDeviceActionDefList() { Name = "DvbReadFromDevice", Uuid = "dbd00012-ff30-40a5-9ceb-a17358d31999" },
+             new CharDeviceActionDefList() { Name = "DvbFormatStorage", Uuid = "dbd00013-ff30-40a5-9ceb-a17358d31999" }
+        };
+    }
+
+
+
+    public class DetectedErrorList {
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
+        [Indexed(Name = "UI_MessageId", Unique = true)]
+        public string Message { get; set; }
         public DateTime Timestamp { get; set; } = DateTime.Now;
     }
 }

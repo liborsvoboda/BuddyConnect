@@ -141,11 +141,17 @@
   <data name="AppName" xml:space="preserve">
     <value>Buddy Connect</value>
   </data>
+  <data name="AvailableDevices" xml:space="preserve">
+    <value>Dostupné Jednotky</value>
+  </data>
   <data name="BtStatus" xml:space="preserve">
     <value>Stav BlueTooth</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>Zrušit</value>
+  </data>
+  <data name="CheckUpdate" xml:space="preserve">
+    <value>Zkontrolovat Aktualizace</value>
   </data>
   <data name="Connected" xml:space="preserve">
     <value>Připojeno</value>
@@ -159,8 +165,14 @@
   <data name="Delete" xml:space="preserve">
     <value>Smazat</value>
   </data>
+  <data name="DeleteNoteQuestion" xml:space="preserve">
+    <value>Opravdu chcete odstranit Vybranou Poznámku?</value>
+  </data>
   <data name="Deutsch" xml:space="preserve">
     <value>Deutsch</value>
+  </data>
+  <data name="DeviceManagement" xml:space="preserve">
+    <value>Správa Jednotky</value>
   </data>
   <data name="DeviceName" xml:space="preserve">
     <value>Název jednotky</value>
@@ -171,11 +183,17 @@
   <data name="English" xml:space="preserve">
     <value>English</value>
   </data>
+  <data name="FileList" xml:space="preserve">
+    <value>Seznam Souborů</value>
+  </data>
   <data name="FoudedDevices" xml:space="preserve">
     <value>Nalezené Jednotky</value>
   </data>
   <data name="FoundedDevices" xml:space="preserve">
     <value>Nalezené Jednotky</value>
+  </data>
+  <data name="InfoReview" xml:space="preserve">
+    <value>Přehled Informací</value>
   </data>
   <data name="Language" xml:space="preserve">
     <value>Jazyk</value>
@@ -222,11 +240,20 @@
   <data name="Settings" xml:space="preserve">
     <value>Nastavení</value>
   </data>
+  <data name="ShowDeviceInfo" xml:space="preserve">
+    <value>Zobrazit Info</value>
+  </data>
+  <data name="ShowListFiles" xml:space="preserve">
+    <value>Soubory</value>
+  </data>
   <data name="Version" xml:space="preserve">
     <value>1.0.0</value>
   </data>
   <data name="WebsiteUrl" xml:space="preserve">
     <value>https://kliknetezde.cz/webbt/</value>
+  </data>
+  <data name="WebViewPage" xml:space="preserve">
+    <value>Web Stránka</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Vítejte</value>

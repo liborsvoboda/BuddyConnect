@@ -1,7 +1,4 @@
 using BuddyConnect.Resources.Languages;
-using BuddyConnect.Controls;
-using System.Linq;
-using System.Globalization;
 using BuddyConnect.DatabaseModel;
 using BuddyConnect.Controllers;
 
@@ -24,19 +21,29 @@ public partial class NoteListPage : ContentPage, GlobalServices
 
     public async Task<bool> LoadStartUpData() {
         noteTable.Clear();
-        var table = new TableSection(AppResources.ResourceManager.GetString("YourNotes", new CultureInfo(App.appSetting.Language)));
-        App.appSetting.Notes.ForEach(note => { table.Add(new TextCell() { Text = note.Timestamp.ToString(), Detail = note.Message }); });
+        var table = new TableSection(AppResources.YourNotes);
+        App.appSetting.Notes.OrderByDescending(a => a.Timestamp).ToList().ForEach(note => {
+            var noteItem = new TextCell() { Text = note.Id.ToString() +": " + note.Timestamp.ToString(), Detail = note.Message };
+            noteItem.SetDynamicResource(TextCell.TextColorProperty, "PrimaryTextColor");
+            noteItem.SetDynamicResource(TextCell.DetailColorProperty, "SecondaryTextColor");
+            noteItem.Tapped += NoteItemDelete_Tapped;
+            table.Add(noteItem);
+        });
         noteTable.Add(table);
         return true;
     }
 
+    //Delete Note
+    private async void NoteItemDelete_Tapped(object sender, EventArgs e) {
+        string action = await DisplayActionSheet(AppResources.DeleteNoteQuestion, AppResources.Cancel, null, AppResources.Delete + " Id:"+ ((TextCell)sender).Text.Split(":")[0] );
+        if (action == AppResources.Delete + " Id:" + ((TextCell)sender).Text.Split(":")[0]) {
+            await NoteListController.DeleteNoteItemAsync(new NoteList() { Id = int.Parse(((TextCell)sender).Text.Split(":")[0]) });
+            App.appSetting.Notes = await NoteListController.GetNoteList();
+            await LoadStartUpData();
+        }
+    }
 
-
-    //private async void DeleteButton_Clicked(object sender, EventArgs e) {
-    //    if (BindingContext is Note note) { if (File.Exists(note.Filename)) { File.Delete(note.Filename); } }
-    //    await Shell.Current.GoToAsync("..");
-    //}
-
+    //Insert Note
     private async void AddNote_Clicked(object sender, EventArgs e) {
         string action = await DisplayPromptAsync(AppResources.AddNote, null, AppResources.Save, AppResources.Cancel, AppResources.WriteNoteHere, -1, null, "");
         if (action != null) {
@@ -46,9 +53,4 @@ public partial class NoteListPage : ContentPage, GlobalServices
         }
     }
 
-    //private async void notesCollection_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-    //    if (e.CurrentSelection.Count != 0) {
-    //        var note = (Note)e.CurrentSelection[0];
-    //    }
-    //}
 }

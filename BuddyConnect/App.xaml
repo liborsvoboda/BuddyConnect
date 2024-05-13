@@ -3,8 +3,7 @@
     x:Class="BuddyConnect.App"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:BuddyConnect"
-    >
+    xmlns:local="clr-namespace:BuddyConnect">
     <Application.Resources>
 
         <ResourceDictionary>
@@ -16,12 +15,12 @@
 
             <ResourceDictionary Source="Themes/LightTheme.xaml" />
 
-            
-            <!--Global Object Types Definition-->
+
+            <!--  Global Object Types Definition  -->
             <Style TargetType="StackLayout">
                 <Setter Property="Spacing" Value="6" />
             </Style>
-            
+
             <Style TargetType="Grid">
                 <Setter Property="BackgroundColor" Value="{DynamicResource TransparentColor}" />
                 <Setter Property="RowSpacing" Value="6" />

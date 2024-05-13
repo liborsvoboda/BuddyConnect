@@ -3,42 +3,45 @@
     x:Class="BuddyConnect.TemplateListPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    
-    xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
-    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    
     xmlns:language="clr-namespace:BuddyConnect.Resources.Languages"
     xmlns:local="clr-namespace:BuddyConnect"
-    
+    xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     Title="{x:Static language:AppResources.Settings}"
-    BackgroundColor="{DynamicResource PageBackgroundColor}"
-    >
+    BackgroundColor="{DynamicResource PageBackgroundColor}">
 
-    <!--<ContentPage.ToolbarItems>
-        <ToolbarItem x:Name="ti_themeSetting" Clicked="OnThemeToolbarItemClicked" />
-    </ContentPage.ToolbarItems>-->
-    
-    <ScrollView>
-        <Grid BackgroundColor="{DynamicResource TransparentColor}">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="60" />
-            </Grid.RowDefinitions>
+    <!--  40- FreeLine is Android Bottom Menu Correction  -->
+    <Grid
+        x:Name="PageContent"
+        Padding="10"
+        ColumnDefinitions="*" RowDefinitions="*,Auto,45">
 
-            <ActivityIndicator x:Name="loading" HorizontalOptions="Center" VerticalOptions="Center"
-                               HeightRequest="100" WidthRequest="100" IsRunning="true" />
+        <!--  Scrolled Data Part  -->
+        <ScrollView
+            Grid.Row="0" Grid.Column="0"
+            Padding="10"
+            HorizontalOptions="Fill" VerticalOptions="Start" VerticalScrollBarVisibility="Always">
+            <TableView Intent="Menu">
+                <TableRoot x:Name="noteTable" />
+            </TableView>
+        </ScrollView>
 
+        <!--  Botom Button List  -->
+        <HorizontalStackLayout
+            Grid.Row="1" Grid.Column="0"
+            HorizontalOptions="Center" VerticalOptions="End">
+            <Button
+                x:Name="btn_AddNote"
+                BackgroundColor="{DynamicResource PrimaryButtonBackgroundColor}"
+                FontSize="20" HorizontalOptions="Center"
+                Text="{x:Static language:AppResources.AddNote}"
+                TextColor="{DynamicResource PrimaryButtonTextColor}" />
+        </HorizontalStackLayout>
 
-
-            <Button Text="{x:Static language:AppResources.OpenWebsite}"
-                    BackgroundColor="{DynamicResource PrimaryButtonBackgroundColor}" 
-                    TextColor="{DynamicResource PrimaryButtonTextColor}"/>
-            
-            
-        </Grid>
-        
-    </ScrollView>
+        <!--  Page Indicator  -->
+        <ActivityIndicator
+            x:Name="aiLoading"
+            Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="1"
+            HeightRequest="100" HorizontalOptions="Center" IsRunning="False" VerticalOptions="Center" WidthRequest="100" />
+    </Grid>
 </ContentPage>

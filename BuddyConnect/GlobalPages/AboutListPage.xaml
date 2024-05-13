@@ -3,33 +3,54 @@
     x:Class="BuddyConnect.AboutListPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    
-    xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
-    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    
     xmlns:language="clr-namespace:BuddyConnect.Resources.Languages"
     xmlns:local="clr-namespace:BuddyConnect"
-    
+    xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     Title="{x:Static language:AppResources.About}"
-    BackgroundColor="{DynamicResource PageBackgroundColor}"
-    >
+    BackgroundColor="{DynamicResource PageBackgroundColor}">
 
-    <VerticalStackLayout Spacing="10" Margin="10" HorizontalOptions="Center">
-        <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
-            <Image
-                x:Name="Heart"
-                HeightRequest="400" HorizontalOptions="Center" Source="heart.png" VerticalOptions="Center" WidthRequest="400" />
-        </HorizontalStackLayout>
+    <Grid
+        Padding="10"
+        ColumnDefinitions="*,*" RowDefinitions="*,Auto,45">
 
-        
-        <Label FontSize="22" FontAttributes="Bold" Text="{x:Static language:AppResources.AppName}" VerticalOptions="End" />
-            <Label FontSize="22" Text="{x:Static language:AppResources.Version}" VerticalOptions="End" />
+        <ScrollView
+            Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+            Padding="0"
+            HorizontalOptions="Fill" VerticalOptions="Start" VerticalScrollBarVisibility="Always">
+            <VerticalStackLayout HorizontalOptions="Fill">
+                <Image
+                    x:Name="Heart"
+                    HeightRequest="400" HorizontalOptions="Center" Source="heart.png" VerticalOptions="Center" WidthRequest="400" />
+                <Label
+                    FontAttributes="Bold" FontSize="22" HorizontalOptions="Center"
+                    Text="{x:Static language:AppResources.AppName}"
+                    TextColor="{DynamicResource PrimaryTextColor}"
+                    VerticalOptions="End" />
+                <Label
+                    FontSize="22" HorizontalOptions="Center"
+                    Text="{x:Static language:AppResources.Version}"
+                    TextColor="{DynamicResource SecondaryTextColor}"
+                    VerticalOptions="End" />
+                <Label HorizontalOptions="Center" 
+                       Text="{x:Static language:AppResources.AppDescription}"
+                        TextColor="{DynamicResource SecondaryTextColor}"
+                       />
+            </VerticalStackLayout>
+        </ScrollView>
 
 
-        <Label Text="{x:Static language:AppResources.AppDescription}" />
-        <Button Text="{x:Static language:AppResources.OpenWebsite}" Clicked="LearnMore_Clicked"
-                BackgroundColor="{DynamicResource PrimaryButtonBackgroundColor}" TextColor="{DynamicResource PrimaryButtonTextColor}"/>
-    </VerticalStackLayout>
-    
-    
+        <Button
+            Grid.Row="1" Grid.Column="0"
+            BackgroundColor="{DynamicResource PrimaryButtonBackgroundColor}"
+            Clicked="CheckUpdate_Clicked" FontSize="10"
+            Text="{x:Static language:AppResources.CheckUpdate}"
+            TextColor="{DynamicResource PrimaryButtonTextColor}" />
+        <Button
+            Grid.Row="1" Grid.Column="1"
+            BackgroundColor="{DynamicResource PrimaryButtonBackgroundColor}"
+            Clicked="LearnMore_Clicked" FontSize="10"
+            Text="{x:Static language:AppResources.OpenWebsite}"
+            TextColor="{DynamicResource SecondaryTextColor}" />
+    </Grid>
 </ContentPage>

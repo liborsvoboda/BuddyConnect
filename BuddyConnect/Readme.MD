@@ -19,7 +19,10 @@
 [addon UI](https://enisn-projects.io/docs/en/uranium/latest/Getting-Started#themes-available)   
 
 MENU https://stackoverflow.com/questions/76314109/net-maui-example-hamburger-menu-non-shell
+https://github.com/dotnet/maui/issues/17965
+https://www.c-sharpcorner.com/article/flyoutpage-in-net-maui/
 
+https://medium.com/devexpress-technical/net-maui-3-combobox-dropdown-alternatives-for-user-friendly-item-selection-within-a-mobile-app-879435f342da
 ---    
 
 # Installation Instructions
@@ -129,3 +132,12 @@ Ta je rozdelena podle povahy a pouziti na
 
 ---    
   
+# Dynamické Programování
+
+1. nastaveni Dynamické Barvy   
+- noteItem.SetDynamicResource(TextCell.TextColorProperty, "PrimaryTextColor");   
+- noteItem.SetDynamicResource(TextCell.DetailColorProperty, "SecondaryTextColor");   
+
+2. Nastavení Dynamického Slovníku
+- some.Text = AppResources.TranslatedWord
+

@@ -133,6 +133,15 @@ namespace BuddyConnect.Resources.Languages {
         }
         
         /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Dostupné Jednotky.
+        /// </summary>
+        public static string AvailableDevices {
+            get {
+                return ResourceManager.GetString("AvailableDevices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Vyhledá lokalizovaný řetězec podobný Stav BlueTooth.
         /// </summary>
         public static string BtStatus {
@@ -147,6 +156,15 @@ namespace BuddyConnect.Resources.Languages {
         public static string Cancel {
             get {
                 return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Zkontrolovat Aktualizace.
+        /// </summary>
+        public static string CheckUpdate {
+            get {
+                return ResourceManager.GetString("CheckUpdate", resourceCulture);
             }
         }
         
@@ -187,11 +205,29 @@ namespace BuddyConnect.Resources.Languages {
         }
         
         /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Opravdu chcete odstranit Vybranou Poznámku?.
+        /// </summary>
+        public static string DeleteNoteQuestion {
+            get {
+                return ResourceManager.GetString("DeleteNoteQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Vyhledá lokalizovaný řetězec podobný Deutsch.
         /// </summary>
         public static string Deutsch {
             get {
                 return ResourceManager.GetString("Deutsch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Správa Jednotky.
+        /// </summary>
+        public static string DeviceManagement {
+            get {
+                return ResourceManager.GetString("DeviceManagement", resourceCulture);
             }
         }
         
@@ -223,6 +259,15 @@ namespace BuddyConnect.Resources.Languages {
         }
         
         /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Seznam Souborů.
+        /// </summary>
+        public static string FileList {
+            get {
+                return ResourceManager.GetString("FileList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Vyhledá lokalizovaný řetězec podobný Nalezené Jednotky.
         /// </summary>
         public static string FoudedDevices {
@@ -237,6 +282,15 @@ namespace BuddyConnect.Resources.Languages {
         public static string FoundedDevices {
             get {
                 return ResourceManager.GetString("FoundedDevices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Přehled Informací.
+        /// </summary>
+        public static string InfoReview {
+            get {
+                return ResourceManager.GetString("InfoReview", resourceCulture);
             }
         }
         
@@ -376,6 +430,24 @@ namespace BuddyConnect.Resources.Languages {
         }
         
         /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Zobrazit Info.
+        /// </summary>
+        public static string ShowDeviceInfo {
+            get {
+                return ResourceManager.GetString("ShowDeviceInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Soubory.
+        /// </summary>
+        public static string ShowListFiles {
+            get {
+                return ResourceManager.GetString("ShowListFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Vyhledá lokalizovaný řetězec podobný 1.0.0.
         /// </summary>
         public static string Version {
@@ -390,6 +462,15 @@ namespace BuddyConnect.Resources.Languages {
         public static string WebsiteUrl {
             get {
                 return ResourceManager.GetString("WebsiteUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Web Stránka.
+        /// </summary>
+        public static string WebViewPage {
+            get {
+                return ResourceManager.GetString("WebViewPage", resourceCulture);
             }
         }
         

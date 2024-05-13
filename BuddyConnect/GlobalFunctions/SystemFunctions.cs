@@ -2,6 +2,8 @@
 using BuddyConnect.Controllers;
 using System.Reflection;
 using System.Globalization;
+using System.Runtime.InteropServices;
+using System.Diagnostics;
 
 namespace BuddyConnect.Functions
 {
@@ -73,5 +75,54 @@ namespace BuddyConnect.Functions
 
             return App.appSetting.Language;
         }
+
+
+        /// <summary>
+        /// Extension For Checking Operation System of Server Running
+        /// </summary>
+        public static class GetOperatingSystemInfo {
+
+            public static bool IsWindows() =>
+                RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
+
+            public static bool IsMacOS() =>
+                RuntimeInformation.IsOSPlatform(OSPlatform.OSX);
+
+            public static bool IsLinux() =>
+                RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
+
+        }
+
+
+        /// <summary>
+        /// Mined-ed Error Message For Answer in API Error Response with detailed info about problem
+        /// </summary>
+        /// <param name="exception"></param>
+        /// <param name="msgCount"> </param>
+        /// <returns></returns>
+        public static string GetUserApiErrMessage(Exception exception, int msgCount = 1) {
+            string result = exception != null ? string.Format("{0}: {1}\n{2}", msgCount, exception.Message, GetUserApiErrMessage(exception.InnerException, ++msgCount)) : string.Empty;
+            #if DEBUG
+            Debug.WriteLine(result);
+            #endif
+            return result;
+
+        }
+
+        /// <summary>
+        /// Mined-ed Error Message For System Save to Database For Simple Solving Problem
+        /// </summary>
+        /// <param name="exception"></param>
+        /// <param name="msgCount"> </param>
+        /// <returns></returns>
+        public static string GetSystemErrMessage(Exception exception, int msgCount = 1) {
+            string result = exception != null ? string.Format("{0}: {1}\n{2}", msgCount, (exception.Message + Environment.NewLine + exception.StackTrace + Environment.NewLine), GetSystemErrMessage(exception.InnerException, ++msgCount)) : string.Empty;
+            #if DEBUG
+            Debug.WriteLine(result);
+            #endif
+            return result;
+        }
+
     }
+
 }

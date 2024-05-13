@@ -7,29 +7,30 @@
     xmlns:local="clr-namespace:BuddyConnect"
     xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    Title="{x:Static language:AppResources.Notes}"
     BackgroundColor="{DynamicResource PageBackgroundColor}">
 
-    <ContentPage.ToolbarItems>
-        <ToolbarItem
-            Clicked="AddNote_Clicked"
-            IconImageSource="{FontImage Glyph='+',
-                                        Color=Black,
-                                        Size=22}"
-            Text="{x:Static language:AppResources.Add}" />
-    </ContentPage.ToolbarItems>
+    <!--  40- FreeLine is Android Bottom Menu Correction  -->
+    <Grid ColumnDefinitions="*" RowDefinitions="*,Auto,45">
 
-
-
-    <!--  Display notes in a list  -->
-    <ScrollView>
-        <VerticalStackLayout
-            Padding="5"
-            Spacing="25" VerticalOptions="Start">
+        <ScrollView
+            Grid.Row="0" Grid.Column="0"
+            Padding="10"
+            HorizontalOptions="Fill" VerticalOptions="Start" VerticalScrollBarVisibility="Always">
             <TableView Intent="Menu">
                 <TableRoot x:Name="noteTable" />
             </TableView>
-        </VerticalStackLayout>
-    </ScrollView>
+        </ScrollView>
 
+
+        <HorizontalStackLayout
+            Grid.Row="1" Grid.Column="0"
+            HorizontalOptions="Center" VerticalOptions="End">
+            <Button
+                x:Name="btn_AddNote"
+                BackgroundColor="{DynamicResource PrimaryButtonBackgroundColor}"
+                Clicked="AddNote_Clicked" FontSize="20" HorizontalOptions="Center"
+                Text="{x:Static language:AppResources.AddNote}"
+                TextColor="{DynamicResource PrimaryButtonTextColor}" />
+        </HorizontalStackLayout>
+    </Grid>
 </ContentPage>

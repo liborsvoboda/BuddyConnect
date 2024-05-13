@@ -25,13 +25,8 @@ namespace BuddyConnect
             await Launcher.Default.OpenAsync(AppResources.WebsiteUrl);
         }
 
-        /*
-        //Change Theme
-        private async void OnThemeToolbarItemClicked(object sender, EventArgs e) {
-            ti_themeSetting.Text = await SystemFunctions.ChangeorLoadTheme(true);
+        private void CheckUpdate_Clicked(object sender, EventArgs e) {
+
         }
-        */
-
-
     }
 }

@@ -141,11 +141,17 @@
   <data name="AppName" xml:space="preserve">
     <value>Buddy Connect</value>
   </data>
+  <data name="AvailableDevices" xml:space="preserve">
+    <value>Available Devices</value>
+  </data>
   <data name="BtStatus" xml:space="preserve">
     <value>BlueTooth Enabled</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
+  </data>
+  <data name="CheckUpdate" xml:space="preserve">
+    <value>Check Update</value>
   </data>
   <data name="Connected" xml:space="preserve">
     <value>Connected</value>
@@ -159,8 +165,14 @@
   <data name="Delete" xml:space="preserve">
     <value>Delete</value>
   </data>
+  <data name="DeleteNoteQuestion" xml:space="preserve">
+    <value>Do you Really want to Delete selected Note?</value>
+  </data>
   <data name="Deutsch" xml:space="preserve">
     <value>Deutsch</value>
+  </data>
+  <data name="DeviceManagement" xml:space="preserve">
+    <value>Manage Device</value>
   </data>
   <data name="DeviceName" xml:space="preserve">
     <value>Device Name</value>
@@ -171,11 +183,17 @@
   <data name="English" xml:space="preserve">
     <value>English</value>
   </data>
+  <data name="FileList" xml:space="preserve">
+    <value>File List</value>
+  </data>
   <data name="FoudedDevices" xml:space="preserve">
     <value>Fouded Devices</value>
   </data>
   <data name="FoundedDevices" xml:space="preserve">
     <value>Founded Devices</value>
+  </data>
+  <data name="InfoReview" xml:space="preserve">
+    <value>Info Review</value>
   </data>
   <data name="Language" xml:space="preserve">
     <value>Language</value>
@@ -222,11 +240,20 @@
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>
   </data>
+  <data name="ShowDeviceInfo" xml:space="preserve">
+    <value>Show Info</value>
+  </data>
+  <data name="ShowListFiles" xml:space="preserve">
+    <value>Files</value>
+  </data>
   <data name="Version" xml:space="preserve">
     <value>1.0.0</value>
   </data>
   <data name="WebsiteUrl" xml:space="preserve">
     <value>https://kliknetezde.cz/webbt/</value>
+  </data>
+  <data name="WebViewPage" xml:space="preserve">
+    <value>Web Page</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Welcome</value>
