@@ -153,8 +153,17 @@
   <data name="CheckUpdate" xml:space="preserve">
     <value>Check Update</value>
   </data>
+  <data name="CleanDevice" xml:space="preserve">
+    <value>Clean Device</value>
+  </data>
+  <data name="CleanDeviceQuestion" xml:space="preserve">
+    <value>Do You really to Delete All Data from Device?</value>
+  </data>
   <data name="Connected" xml:space="preserve">
     <value>Connected</value>
+  </data>
+  <data name="Contacts" xml:space="preserve">
+    <value>Contacts</value>
   </data>
   <data name="Czech" xml:space="preserve">
     <value>Česky</value>
@@ -210,6 +219,9 @@
   <data name="Menu" xml:space="preserve">
     <value>Menu</value>
   </data>
+  <data name="MenuWebViewPage" xml:space="preserve">
+    <value>Menu Web Open This Url</value>
+  </data>
   <data name="News" xml:space="preserve">
     <value>News</value>
   </data>
@@ -237,6 +249,12 @@
   <data name="Search" xml:space="preserve">
     <value>Search</value>
   </data>
+  <data name="SearchDeviceName" xml:space="preserve">
+    <value>Search Device Name</value>
+  </data>
+  <data name="SearchedDeviceName" xml:space="preserve">
+    <value>Searched Device Name</value>
+  </data>
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>
   </data>
@@ -245,6 +263,9 @@
   </data>
   <data name="ShowListFiles" xml:space="preserve">
     <value>Files</value>
+  </data>
+  <data name="Size" xml:space="preserve">
+    <value>Size</value>
   </data>
   <data name="Version" xml:space="preserve">
     <value>1.0.0</value>
@@ -260,6 +281,9 @@
   </data>
   <data name="WriteNoteHere" xml:space="preserve">
     <value>Write note Here</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
   </data>
   <data name="YourNotes" xml:space="preserve">
     <value>Your Notes</value>

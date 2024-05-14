@@ -1,4 +1,5 @@
 ﻿using BuddyConnect.Functions;
+using BuddyConnect.Resources.Languages;
 using System.Diagnostics;
 
 namespace BuddyConnect
@@ -19,7 +20,7 @@ namespace BuddyConnect
 
         //Solve Load Startup Data and Remove Welcome Page
         public async Task<bool> LoadStartUpData() {
-            //await StatupControls.StartupInit();
+            TranslatePageObjects();
 
             await Heart.ScaleTo(1.3, 1000); await Heart.ScaleTo(1, 1000);
             await Heart.ScaleTo(1.3, 1000); await Heart.ScaleTo(1, 1000);
@@ -27,6 +28,12 @@ namespace BuddyConnect
             ((Shell)App.Current.MainPage).Items.RemoveAt(0);
             await this.Navigation.PopToRootAsync();
             return true;
+        }
+
+        //List Of All Translated Object For Reload By LoadStartUpData()
+        private void TranslatePageObjects() {
+            lbl_loading.Text = AppResources.Loading;
+
         }
     }
 }

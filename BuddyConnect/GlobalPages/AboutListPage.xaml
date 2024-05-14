@@ -23,30 +23,38 @@
                     x:Name="Heart"
                     HeightRequest="400" HorizontalOptions="Center" Source="heart.png" VerticalOptions="Center" WidthRequest="400" />
                 <Label
+                    x:Name="lbl_appName"
                     FontAttributes="Bold" FontSize="22" HorizontalOptions="Center"
                     Text="{x:Static language:AppResources.AppName}"
                     TextColor="{DynamicResource PrimaryTextColor}"
                     VerticalOptions="End" />
+
                 <Label
+                    x:Name="lbl_version"
                     FontSize="22" HorizontalOptions="Center"
                     Text="{x:Static language:AppResources.Version}"
                     TextColor="{DynamicResource SecondaryTextColor}"
                     VerticalOptions="End" />
-                <Label HorizontalOptions="Center" 
-                       Text="{x:Static language:AppResources.AppDescription}"
-                        TextColor="{DynamicResource SecondaryTextColor}"
-                       />
+
+                <Label
+                    x:Name="lbl_appDesc"
+                    HorizontalOptions="Center"
+                    Text="{x:Static language:AppResources.AppDescription}"
+                    TextColor="{DynamicResource SecondaryTextColor}" />
             </VerticalStackLayout>
         </ScrollView>
 
 
         <Button
+            x:Name="btn_checkUpdate"
             Grid.Row="1" Grid.Column="0"
             BackgroundColor="{DynamicResource PrimaryButtonBackgroundColor}"
             Clicked="CheckUpdate_Clicked" FontSize="10"
             Text="{x:Static language:AppResources.CheckUpdate}"
             TextColor="{DynamicResource PrimaryButtonTextColor}" />
+
         <Button
+            x:Name="btn_openWebsite"
             Grid.Row="1" Grid.Column="1"
             BackgroundColor="{DynamicResource PrimaryButtonBackgroundColor}"
             Clicked="LearnMore_Clicked" FontSize="10"

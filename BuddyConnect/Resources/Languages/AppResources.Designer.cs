@@ -169,11 +169,38 @@ namespace BuddyConnect.Resources.Languages {
         }
         
         /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Vyčistit Jednotku.
+        /// </summary>
+        public static string CleanDevice {
+            get {
+                return ResourceManager.GetString("CleanDevice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Opravdu Chcete Smazat všechna Data z Jednotky?.
+        /// </summary>
+        public static string CleanDeviceQuestion {
+            get {
+                return ResourceManager.GetString("CleanDeviceQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Vyhledá lokalizovaný řetězec podobný Připojeno.
         /// </summary>
         public static string Connected {
             get {
                 return ResourceManager.GetString("Connected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Kontakty.
+        /// </summary>
+        public static string Contacts {
+            get {
+                return ResourceManager.GetString("Contacts", resourceCulture);
             }
         }
         
@@ -340,6 +367,15 @@ namespace BuddyConnect.Resources.Languages {
         }
         
         /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Menu Web Otevře tuto Url.
+        /// </summary>
+        public static string MenuWebViewPage {
+            get {
+                return ResourceManager.GetString("MenuWebViewPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Vyhledá lokalizovaný řetězec podobný Novinky.
         /// </summary>
         public static string News {
@@ -421,6 +457,24 @@ namespace BuddyConnect.Resources.Languages {
         }
         
         /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Název Vyhledávané Jednotky.
+        /// </summary>
+        public static string SearchDeviceName {
+            get {
+                return ResourceManager.GetString("SearchDeviceName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Hledaný Název Jednotky.
+        /// </summary>
+        public static string SearchedDeviceName {
+            get {
+                return ResourceManager.GetString("SearchedDeviceName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Vyhledá lokalizovaný řetězec podobný Nastavení.
         /// </summary>
         public static string Settings {
@@ -444,6 +498,15 @@ namespace BuddyConnect.Resources.Languages {
         public static string ShowListFiles {
             get {
                 return ResourceManager.GetString("ShowListFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Velikost.
+        /// </summary>
+        public static string Size {
+            get {
+                return ResourceManager.GetString("Size", resourceCulture);
             }
         }
         
@@ -489,6 +552,15 @@ namespace BuddyConnect.Resources.Languages {
         public static string WriteNoteHere {
             get {
                 return ResourceManager.GetString("WriteNoteHere", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Ano.
+        /// </summary>
+        public static string Yes {
+            get {
+                return ResourceManager.GetString("Yes", resourceCulture);
             }
         }
         

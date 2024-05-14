@@ -16,8 +16,18 @@ namespace BuddyConnect
         }
 
         public async Task<bool> LoadStartUpData() {
-            //ti_themeSetting.Text = await SystemFunctions.ChangeorLoadTheme();
+            TranslatePageObjects();
             return true;
+        }
+
+
+        //List Of All Translated Object For Reload By LoadStartUpData()
+        private void TranslatePageObjects() {
+            lbl_appName.Text = AppResources.AppName;
+            lbl_version.Text = AppResources.Version;
+            lbl_appDesc.Text = AppResources.AppDescription;
+            btn_checkUpdate.Text = AppResources.CheckUpdate;
+            btn_openWebsite.Text = AppResources.OpenWebsite;
         }
 
 

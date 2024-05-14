@@ -25,6 +25,8 @@
         <HorizontalStackLayout
             Grid.Row="1" Grid.Column="0"
             HorizontalOptions="Center" VerticalOptions="End">
+            
+            
             <Button
                 x:Name="btn_AddNote"
                 BackgroundColor="{DynamicResource PrimaryButtonBackgroundColor}"

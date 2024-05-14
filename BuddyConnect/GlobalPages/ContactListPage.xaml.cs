@@ -3,8 +3,10 @@ using BuddyConnect.Resources.Languages;
 
 namespace BuddyConnect
 {
-    public partial class TemplateListPage : ContentPage, GlobalServices {
-        public TemplateListPage() {
+    public partial class ContactListPage : ContentPage, GlobalServices {
+
+
+        public ContactListPage() {
             InitializeComponent();
             _ = LoadStartUpData();
         }
@@ -21,7 +23,7 @@ namespace BuddyConnect
 
         //List Of All Translated Object For Reload By LoadStartUpData()
         private void TranslatePageObjects() {
-            btn_AddNote.Text = AppResources.AddNote;
+            //btn_AddNote.Text = AppResources.AddNote;
 
         }
 

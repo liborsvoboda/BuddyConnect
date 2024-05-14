@@ -117,6 +117,13 @@
                            IconSize=30}"
         Route="NoteListPage" />
 
+    <ShellContent
+        x:Name="ContactListPage"
+        Title="{x:Static language:AppResources.Contacts}"
+        ContentTemplate="{DataTemplate local:ContactListPage}"
+        Icon="{mi:Material Icon=Notes,
+                           IconSize=30}"
+        Route="ContactListPage" />
 
     <ShellContent
         x:Name="AboutListPage"

@@ -14,9 +14,11 @@
 
     <Color x:Key="PrimaryTextColor">Black</Color>
     <Color x:Key="SecondaryTextColor">DarkGray</Color>
-
+    <Color x:Key="InputBackgroundColor">AntiqueWhite</Color>
+    
     <Color x:Key="PrimaryButtonBackgroundColor">#512BD4</Color>
     <Color x:Key="PrimaryButtonTextColor">White</Color>
+    <Color x:Key="ButtonAlertBackgroundColor">Salmon</Color>
 
     <Color x:Key="TransparentColor">Transparent</Color>
 

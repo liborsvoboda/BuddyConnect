@@ -153,8 +153,17 @@
   <data name="CheckUpdate" xml:space="preserve">
     <value>Zkontrolovat Aktualizace</value>
   </data>
+  <data name="CleanDevice" xml:space="preserve">
+    <value>Vyčistit Jednotku</value>
+  </data>
+  <data name="CleanDeviceQuestion" xml:space="preserve">
+    <value>Opravdu Chcete Smazat všechna Data z Jednotky?</value>
+  </data>
   <data name="Connected" xml:space="preserve">
     <value>Připojeno</value>
+  </data>
+  <data name="Contacts" xml:space="preserve">
+    <value>Kontakty</value>
   </data>
   <data name="Czech" xml:space="preserve">
     <value>Česky</value>
@@ -210,6 +219,9 @@
   <data name="Menu" xml:space="preserve">
     <value>Menu</value>
   </data>
+  <data name="MenuWebViewPage" xml:space="preserve">
+    <value>Menu Web Otevře tuto Url</value>
+  </data>
   <data name="News" xml:space="preserve">
     <value>Novinky</value>
   </data>
@@ -237,6 +249,12 @@
   <data name="Search" xml:space="preserve">
     <value>Vyhledat</value>
   </data>
+  <data name="SearchDeviceName" xml:space="preserve">
+    <value>Název Vyhledávané Jednotky</value>
+  </data>
+  <data name="SearchedDeviceName" xml:space="preserve">
+    <value>Hledaný Název Jednotky</value>
+  </data>
   <data name="Settings" xml:space="preserve">
     <value>Nastavení</value>
   </data>
@@ -245,6 +263,9 @@
   </data>
   <data name="ShowListFiles" xml:space="preserve">
     <value>Soubory</value>
+  </data>
+  <data name="Size" xml:space="preserve">
+    <value>Velikost</value>
   </data>
   <data name="Version" xml:space="preserve">
     <value>1.0.0</value>
@@ -260,6 +281,9 @@
   </data>
   <data name="WriteNoteHere" xml:space="preserve">
     <value>Zapište si poznámku</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Ano</value>
   </data>
   <data name="YourNotes" xml:space="preserve">
     <value>Vaše Poznámky</value>

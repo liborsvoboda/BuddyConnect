@@ -3,6 +3,9 @@
 
 [Popis Technologie](https://learn.microsoft.com/en-us/dotnet/maui/user-interface/menu-bar?view=net-maui-8.0)     
 
+[Maui Objekty](https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/tableview?view=net-maui-8.0)   
+
+
 ---    
 
 # Maui Samples   
@@ -18,11 +21,12 @@
 
 [addon UI](https://enisn-projects.io/docs/en/uranium/latest/Getting-Started#themes-available)   
 
-MENU https://stackoverflow.com/questions/76314109/net-maui-example-hamburger-menu-non-shell
-https://github.com/dotnet/maui/issues/17965
-https://www.c-sharpcorner.com/article/flyoutpage-in-net-maui/
+[MENU](https://stackoverflow.com/questions/76314109/net-maui-example-hamburger-menu-non-shell)   
 
-https://medium.com/devexpress-technical/net-maui-3-combobox-dropdown-alternatives-for-user-friendly-item-selection-within-a-mobile-app-879435f342da
+https://github.com/dotnet/maui/issues/17965
+[Flyout](https://www.c-sharpcorner.com/article/flyoutpage-in-net-maui/)  
+[DropDown](https://medium.com/devexpress-technical/net-maui-3-combobox-dropdown-alternatives-for-user-friendly-item-selection-within-a-mobile-app-879435f342da)   
+
 ---    
 
 # Installation Instructions
@@ -132,12 +136,37 @@ Ta je rozdelena podle povahy a pouziti na
 
 ---    
   
-# Dynamické Programování
+# Dynamická Pravidla Programování   
 
 1. nastaveni Dynamické Barvy   
 - noteItem.SetDynamicResource(TextCell.TextColorProperty, "PrimaryTextColor");   
-- noteItem.SetDynamicResource(TextCell.DetailColorProperty, "SecondaryTextColor");   
+- noteItem.SetDynamicResource(TextCell.DetailColorProperty, "SecondaryTextColor");     
+    
+2. Nastavení Dynamického Slovníku   
+- some.Text = AppResources.TranslatedWord   
+   
+3. Všechny slovníkové Popisy XAML   
+- vložit do TranslatePageObjects()  
+  pro dynamický překlad online při změně  
+- je překládán zaroven s provedenim LoadStartupData   
+  při každé změně JAzyk/Theme   
+   
 
-2. Nastavení Dynamického Slovníku
-- some.Text = AppResources.TranslatedWord
+4. Try Catch Zaznamenávání chyb na pozadí do DB   
+vše vkládat do TRY/CATCH s kódem:    
 
+```cs   
+catch (Exception ex) { 
+    await DetectedErrorListController.SaveDetectedErrorList(new DetectedErrorList() { Message = SystemFunctions.GetSystemErrMessage(ex) });
+}
+```   
+
+
+---     
+ 
+# Přínosy  Serveru pro App    
+
+- ukladani chyb na serer pro OK vyvoj
+- Novinky ze Serveru
+- stranky ze serveru
+- 

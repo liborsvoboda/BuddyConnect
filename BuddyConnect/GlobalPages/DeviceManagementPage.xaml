@@ -12,31 +12,33 @@
     <Grid
         x:Name="PageContent"
         Padding="10"
-        ColumnDefinitions="0.7*,0.3*" RowDefinitions="Auto,Auto,Auto,*,Auto,40">
+        ColumnDefinitions="0.4*,0.3*,0.3*" RowDefinitions="Auto,Auto,Auto,*,Auto,40">
 
         <Label
-            Grid.Row="0" Grid.Column="0"
-            FontSize="32" HorizontalOptions="Start"
+            x:Name="lbl_btLabel"
+            Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+            FontSize="28" HorizontalOptions="Start"
             Text="{x:Static language:AppResources.BtStatus}"
             TextColor="{DynamicResource PrimaryTextColor}" />
 
         <Label
             x:Name="lbl_status"
-            Grid.Row="1" Grid.Column="0"
+            Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
             FontSize="32" HorizontalOptions="Center"
             TextColor="{DynamicResource SecondaryTextColor}" />
 
         <Button
             x:Name="bt_scanButton"
-            Grid.Row="1" Grid.Column="1"
+            Grid.Row="1" Grid.Column="2"
             BackgroundColor="{DynamicResource PrimaryButtonBackgroundColor}"
             Clicked="BtScanButton_Clicked" IsVisible="False"
             Text="{x:Static language:AppResources.Search}"
             TextColor="{DynamicResource PrimaryButtonTextColor}" />
 
         <VerticalStackLayout
-            Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
-            Background="AntiqueWhite" HorizontalOptions="CenterAndExpand" IsVisible="True" VerticalOptions="CenterAndExpand">
+            Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
+            Margin="0" Padding="0"
+            Background="AntiqueWhite" HorizontalOptions="CenterAndExpand" IsVisible="True" VerticalOptions="Start">
 
             <TableView
                 HorizontalOptions="CenterAndExpand" Intent="Menu" VerticalOptions="CenterAndExpand">
@@ -46,16 +48,15 @@
             </TableView>
         </VerticalStackLayout>
 
-        <ScrollView
-            Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
-            Background="LightGreen" HorizontalOptions="Center" IsVisible="True" VerticalOptions="CenterAndExpand" VerticalScrollBarVisibility="Always">
-            <TableView
-                HorizontalOptions="CenterAndExpand" Intent="Menu" VerticalOptions="Center">
-                <TableRoot x:Name="infoTable">
-                    <TableSection x:Name="infoList" Title="{x:Static language:AppResources.InfoReview}" />
-                </TableRoot>
-            </TableView>
-        </ScrollView>
+
+        <TableView
+            Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"
+            Margin="0" Background="LightGreen" 
+            HorizontalOptions="Fill" Intent="Menu" VerticalOptions="Start">
+            <TableRoot x:Name="infoTable">
+                <TableSection x:Name="infoList" Title="{x:Static language:AppResources.InfoReview}" />
+            </TableRoot>
+        </TableView>
 
         <Button
             x:Name="bt_infoButton"
@@ -73,10 +74,18 @@
             Text="{x:Static language:AppResources.ShowListFiles}"
             TextColor="{DynamicResource PrimaryButtonTextColor}" />
 
+        <Button
+            x:Name="bt_formatButton"
+            Grid.Row="4" Grid.Column="2"
+            BackgroundColor="{DynamicResource ButtonAlertBackgroundColor}"
+            Clicked="BtnFormatButton_Clicked" FontSize="10" IsVisible="False"
+            Text="{x:Static language:AppResources.CleanDevice}"
+            TextColor="{DynamicResource PrimaryButtonTextColor}" />
+
         <!--  Page Indicator  -->
         <ActivityIndicator
             x:Name="aiLoading"
-            Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+            Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
             HeightRequest="100" HorizontalOptions="Center" IsRunning="False" VerticalOptions="Center" WidthRequest="100" />
     </Grid>
 </ContentPage>

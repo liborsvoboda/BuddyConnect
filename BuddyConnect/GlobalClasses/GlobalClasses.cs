@@ -26,9 +26,9 @@ namespace BuddyConnect {
         public string Language { get; set; }
         public string Theme { get; set; }
         public string TranslatedTheme { get; set; }
-        public string DeviceName { get; set; }
+        //public string DeviceName { get; set; }
 
-        //public List<DeviceList> Devices { get; set; }
+        public List<SettingList> Settings { get; set; } = new List<SettingList>();
         public List<NoteList> Notes { get; set; }
         public List<DeviceInfoList> DeviceInfoList { get; set; } = new List<DeviceInfoList> { };
         public List<DeviceFileList> DeviceFileLists { get; set; } = new List<DeviceFileList> { };
@@ -39,10 +39,12 @@ namespace BuddyConnect {
         public IBluetoothLE Bluetooth { get; set; }
         public IAdapter BtAdapter { get; set; }
         public List<IDevice> BtAvailableDevices { get; set; } = new List<IDevice>();
-        //public List<BtServices> Services { get; set; } = new List<BtServices>();
         public List<BtCharacteristics> Characteristics { get; set; } = new List<BtCharacteristics> { };
     }
 
+
+
+    //Temp Definitions
     public class DeviceInfoList { 
         public string Name { get; set; }
         public string Value { get; set; }
@@ -54,7 +56,7 @@ namespace BuddyConnect {
         public string Value { get; set; }
     }
 
-    //Temp Definitions
+
     public class BtServices {
         public string? ServiceName { get; set; }
         public Guid? UUid { get; set; }

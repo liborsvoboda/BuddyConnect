@@ -73,8 +73,9 @@ namespace BuddyConnect {
                 App.appSetting.Theme = (await SettingListController.GetSettingListByKey("Theme")).Value;
                 App.appSetting.TranslatedTheme = AppResources.ResourceManager.GetString(App.appSetting.Theme);
                 App.appSetting.Language = (await SettingListController.GetSettingListByKey("Language")).Value;
-                App.appSetting.DeviceName = (await SettingListController.GetSettingListByKey("DeviceName")).Value;
+                //App.appSetting.DeviceName = (await SettingListController.GetSettingListByKey("DeviceName")).Value;
 
+                App.appSetting.Settings = (await SettingListController.GetSettingList());
                 App.appSetting.CharDeviceInfoDefLists = (await CharDeviceInfoDefListController.GetCharDeviceInfoDefList());
                 App.appSetting.CharDeviceActionDefLists = (await CharDeviceActionDefListController.GetCharDeviceActionDefList());
                 App.appSetting.Notes = (await NoteListController.GetNoteList());

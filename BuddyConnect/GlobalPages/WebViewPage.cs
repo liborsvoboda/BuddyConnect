@@ -1,21 +1,21 @@
 ﻿using BuddyConnect.Functions;
+using BuddyConnect.Resources.Languages;
 
 namespace BuddyConnect
 {
     public partial class WebViewPage : ContentPage, GlobalServices {
 
-       // class WebViewPage : ContentPage {
 
         public WebViewPage() {
             Label header = new Label {
-                Text = "WebView",
-                FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)),
+                Text = AppResources.WebViewPage,
+                FontSize = 32,
                 HorizontalOptions = LayoutOptions.Center
             };
 
             WebView webView = new WebView {
                 Source = new UrlWebViewSource {
-                    Url = "https://kliknetezde.cz",
+                    Url = App.appSetting.Settings.Where(a => a.Key == "WebPage").FirstOrDefault().Value,
                 },
                 VerticalOptions = LayoutOptions.Fill,
                 HorizontalOptions = LayoutOptions.Fill
@@ -26,11 +26,9 @@ namespace BuddyConnect
 
             // Build the page.
             this.Content = new StackLayout {
-                Children =
-                {
-                    //header,
-                    webView
-                }
+                VerticalOptions = LayoutOptions.Fill,
+                HorizontalOptions = LayoutOptions.Fill,
+                Children = { /*header,*/ webView }
             };
 
             _ = LoadStartUpData();
@@ -42,9 +40,14 @@ namespace BuddyConnect
         }
 
         public async Task<bool> LoadStartUpData() {
+            TranslatePageObjects();
             return true;
         }
-       
 
+
+        //List Of All Translated Object For Reload By LoadStartUpData()
+        private void TranslatePageObjects() {
+
+        }
     }
 }

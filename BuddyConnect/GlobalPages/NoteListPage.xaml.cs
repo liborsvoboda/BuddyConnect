@@ -13,6 +13,7 @@ public partial class NoteListPage : ContentPage, GlobalServices
 
         InitializeComponent();
         _ = LoadStartUpData();
+
     }
 
 
@@ -23,19 +24,28 @@ public partial class NoteListPage : ContentPage, GlobalServices
         noteTable.Clear();
         var table = new TableSection(AppResources.YourNotes);
         App.appSetting.Notes.OrderByDescending(a => a.Timestamp).ToList().ForEach(note => {
-            var noteItem = new TextCell() { Text = note.Id.ToString() +": " + note.Timestamp.ToString(), Detail = note.Message };
+            var noteItem = new TextCell() { Text = note.Id.ToString() +": " + note.Timestamp.ToString(), Detail = note.Message  };
             noteItem.SetDynamicResource(TextCell.TextColorProperty, "PrimaryTextColor");
             noteItem.SetDynamicResource(TextCell.DetailColorProperty, "SecondaryTextColor");
             noteItem.Tapped += NoteItemDelete_Tapped;
             table.Add(noteItem);
         });
         noteTable.Add(table);
+        TranslatePageObjects();
         return true;
     }
 
+
+    //List Of All Translated Object For Reload By LoadStartUpData()
+    private void TranslatePageObjects() {
+        btn_AddNote.Text = AppResources.AddNote;
+
+    }
+
+
     //Delete Note
     private async void NoteItemDelete_Tapped(object sender, EventArgs e) {
-        string action = await DisplayActionSheet(AppResources.DeleteNoteQuestion, AppResources.Cancel, null, AppResources.Delete + " Id:"+ ((TextCell)sender).Text.Split(":")[0] );
+            string action = await DisplayActionSheet(AppResources.DeleteNoteQuestion, AppResources.Cancel, null, AppResources.Delete + " Id:"+ ((TextCell)sender).Text.Split(":")[0] );
         if (action == AppResources.Delete + " Id:" + ((TextCell)sender).Text.Split(":")[0]) {
             await NoteListController.DeleteNoteItemAsync(new NoteList() { Id = int.Parse(((TextCell)sender).Text.Split(":")[0]) });
             App.appSetting.Notes = await NoteListController.GetNoteList();

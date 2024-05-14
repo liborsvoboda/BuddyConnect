@@ -2,10 +2,10 @@
 using BuddyConnect.DatabaseModel;
 using BuddyConnect.Functions;
 using BuddyConnect.Resources.Languages;
-using Microsoft.Maui.Controls;
+using CommunityToolkit.Maui.Storage;
 using Plugin.BLE.Abstractions.Contracts;
-using System.Diagnostics;
-using System.Globalization;
+using System.Text;
+
 
 
 namespace BuddyConnect;
@@ -24,15 +24,7 @@ public partial class DeviceManagementPage : ContentPage, GlobalServices {
         _ = LoadStartUpData();
     }
 
-    // Set up scanner
-    private void ConfigureBLE() {
-        App.appSetting.BlueTooth.BtAdapter.ScanMode = ScanMode.LowLatency;
-        App.appSetting.BlueTooth.BtAdapter.ScanTimeout = 10000; // ms
-        App.appSetting.BlueTooth.Bluetooth.StateChanged += Bluetooth_StateChanged;
-        App.appSetting.BlueTooth.BtAdapter.ScanTimeoutElapsed += BtAdapter_ScanTimeoutElapsed;
-        App.appSetting.BlueTooth.BtAdapter.DeviceAdvertised += BtAdapter_DeviceAdvertised; ;
-        App.appSetting.BlueTooth.BtAdapter.DeviceDiscovered += BtAdapter_DeviceDiscovered; ;
-    }
+
 
     private async void BtAdapter_DeviceDiscovered(object sender, Plugin.BLE.Abstractions.EventArgs.DeviceEventArgs e) {
         // App.appSetting.BlueTooth.BtAvailableDevices.Add(e.Device);
@@ -41,7 +33,7 @@ public partial class DeviceManagementPage : ContentPage, GlobalServices {
 
     //Detect Devices By Name
     private void BtAdapter_DeviceAdvertised(object sender, Plugin.BLE.Abstractions.EventArgs.DeviceEventArgs e) {
-        if (e.Device.Name != null && e.Device.Name.ToLower().Contains(App.appSetting.DeviceName.ToLower())
+        if (e.Device.Name != null && e.Device.Name.ToLower().Contains(App.appSetting.Settings.Where(a => a.Key == "DeviceName").FirstOrDefault().Value.ToLower())
             && (App.appSetting.BlueTooth.BtAvailableDevices.Count == 0 || (App.appSetting.BlueTooth.BtAvailableDevices.Count > 0 && !App.appSetting.BlueTooth.BtAvailableDevices.Contains(e.Device)))) {
             App.appSetting.BlueTooth.BtAvailableDevices.Add(e.Device);
         }
@@ -52,13 +44,6 @@ public partial class DeviceManagementPage : ContentPage, GlobalServices {
     //BT State Changed Action
     private async void Bluetooth_StateChanged(object sender, Plugin.BLE.Abstractions.EventArgs.BluetoothStateChangedArgs e) => await LoadStartUpData();
 
-    //Check BT Permissions
-    private async Task<bool> CheckBtPermissions() {
-        var permissionResult = await Permissions.CheckStatusAsync<Permissions.Bluetooth>();
-        if (permissionResult != PermissionStatus.Granted) { permissionResult = await Permissions.RequestAsync<Permissions.Bluetooth>(); }
-        if (permissionResult != PermissionStatus.Granted) { AppInfo.ShowSettingsUI(); return false; }
-        return true;
-    }
 
     //Set BT Device Status
     public async Task<bool> LoadStartUpData() {
@@ -70,14 +55,14 @@ public partial class DeviceManagementPage : ContentPage, GlobalServices {
             else if (!App.appSetting.BlueTooth.Bluetooth.IsAvailable) {
                 lbl_status.Text = AppResources.NotAvailable;
                 bt_scanButton.IsVisible = false;
-                /*App.appSetting.Devices.Clear();*/ deviceList.Clear(); infoList.Clear();
-                bt_infoButton.IsVisible = bt_filesButton.IsVisible = false;
+                deviceList.Clear(); infoList.Clear();
+                bt_infoButton.IsVisible = bt_filesButton.IsVisible = bt_formatButton.IsVisible = false;
             }
             else if (App.appSetting.BlueTooth.Bluetooth.IsAvailable && App.appSetting.BlueTooth.Bluetooth.State.ToString().ToLower() == "off") {
                 lbl_status.Text = AppResources.Off;
                 bt_scanButton.IsVisible = false;
-                /*App.appSetting.Devices.Clear();*/ deviceList.Clear(); infoList.Clear();
-                bt_infoButton.IsVisible = bt_filesButton.IsVisible = false;
+                deviceList.Clear(); infoList.Clear();
+                bt_infoButton.IsVisible = bt_filesButton.IsVisible = bt_formatButton.IsVisible = false;
             }
             else if (App.appSetting.BlueTooth.Bluetooth.IsAvailable && App.appSetting.BlueTooth.Bluetooth.State.ToString().ToLower() == "on") {
                 lbl_status.Text = AppResources.On;
@@ -86,71 +71,56 @@ public partial class DeviceManagementPage : ContentPage, GlobalServices {
         } catch (Exception ex) {
             await DetectedErrorListController.SaveDetectedErrorList(new DetectedErrorList() { Message = SystemFunctions.GetSystemErrMessage(ex) });
         }
+
+
+        TranslatePageObjects();
         return true;
     }
 
+    //List Of All Translated Object For Reload By LoadStartUpData()
+    private void TranslatePageObjects() {
+        lbl_btLabel.Text = AppResources.BtStatus;
+        bt_scanButton.Text = AppResources.Search;
+        deviceList.Title = AppResources.AvailableDevices;
+        infoList.Title = AppResources.InfoReview;
+        bt_infoButton.Text = AppResources.ShowDeviceInfo;
+        bt_filesButton.Text = AppResources.ShowListFiles;
+        bt_formatButton.Text = AppResources.CleanDevice;
+    }
     public async Task Dismiss() { await Navigation.PopModalAsync(); }
 
-    //Disconnect and Clear Datasets
-    private async Task<bool> DisconnectBTDevices() {
-        foreach (var device in App.appSetting.BlueTooth.BtAdapter.ConnectedDevices) { await App.appSetting.BlueTooth.BtAdapter.DisconnectDeviceAsync(device); }
-        App.appSetting.BlueTooth.BtAvailableDevices.Clear(); App.appSetting.BlueTooth.Characteristics.Clear();
-        //App.appSetting.Services.Clear(); 
-        ClearBTdata();
-        return true;
-    }
-
-    //Clear Readed BTdata 
-    private void ClearBTdata() {
-        /*App.appSetting.Devices.Clear(); */deviceList.Clear(); infoList.Clear();
-        App.appSetting.DeviceInfoList.Clear(); App.appSetting.DeviceFileLists.Clear();
-    }
-
-    //Set Indicator IsLoading
-    private void IsLoading(bool isLoading) {
-        if (isLoading) { //((Button)button).BackgroundColor = Color.Parse("Red");
-            PageContent.Children.Where(a => a.GetType().Name == "Button").ToList().ForEach(button => { ((Button)button).IsEnabled = false; });
-        } else { PageContent.Children.Where(a => a.GetType().Name == "Button").ToList().ForEach(button => { ((Button)button).IsEnabled = true; }); }
-        aiLoading.IsRunning = isLoading;
-    }
 
     //Run BT Scanning 
     private async void BtScanButton_Clicked(object sender, EventArgs e) {
         try {
-            IsLoading(true);
-            bt_infoButton.IsVisible = bt_filesButton.IsVisible = false;
-
-            //Disconect All 
-            await DisconnectBTDevices();
+            IsLoading(true); ClearListBTdata();
+            await ForgotBTDevices();//Forgot All 
 
             await App.appSetting.BlueTooth.BtAdapter.StartScanningForDevicesAsync();
             if (App.appSetting.BlueTooth.BtAvailableDevices.Count > 0) {
 
                 App.appSetting.BlueTooth.BtAvailableDevices.ForEach(availableDevice => {
-                    //App.appSetting.Devices.Add(new DeviceList() { Name = availableDevice.Name, Address = availableDevice.NativeDevice.ToString() });
                     var textCell = new TextCell() { Text = availableDevice.Name }; textCell.Tapped += SelectDevice_Clicked; deviceList.Add(textCell);
                 });
             }
         } catch (Exception ex) {
             await DetectedErrorListController.SaveDetectedErrorList(new DetectedErrorList() { Message = SystemFunctions.GetSystemErrMessage(ex) });
         }
-        IsLoading(false); bt_scanButton.IsEnabled = true;
+        IsLoading(false);
         await LoadStartUpData();
     }
+
 
     //Load Data From Founded Device
     private async void SelectDevice_Clicked(object sender, EventArgs e) {
         try {
-            IsLoading(true); ClearBTdata(); infoList.Title = AppResources.InfoReview;
+            IsLoading(true); ClearListBTdata();
+            await DisconnectDevice();//Disconnect Device
 
-            //Connect To BT Device RUN THIS DUAL CONNECTION ONLY
+            //Connect To BT Device
             var adapter = App.appSetting.BlueTooth.BtAdapter;
-            adapter?.ConnectToDeviceAsync(App.appSetting.BlueTooth?.BtAvailableDevices?.First(a => a.Name.ToString() == ((TextCell)sender).Text), default);
-            IReadOnlyList<IDevice> connectedDevice = adapter.GetKnownDevicesByIds(new Guid[] { (Guid)App.appSetting.BlueTooth?.BtAvailableDevices?.First(a => a.Name.ToString() == ((TextCell)sender).Text).Id });
-            foreach (var cdevice in connectedDevice) { await adapter.ConnectToDeviceAsync(cdevice); }
-
-            //Get Connected Device
-            var device  = App.appSetting.BlueTooth.BtAdapter.ConnectedDevices?.ToList()[0];
+            await adapter.ConnectToDeviceAsync(App.appSetting.BlueTooth?.BtAvailableDevices?.First(a => a.Name.ToString() == ((TextCell)sender).Text), default);
+            var device = App.appSetting.BlueTooth.BtAdapter.ConnectedDevices?.ToList()[0];
 
             IReadOnlyList<IService> services = await device.GetServicesAsync(default);
             foreach (var service in services) {
@@ -158,18 +128,18 @@ public partial class DeviceManagementPage : ContentPage, GlobalServices {
                 IReadOnlyList<ICharacteristic> characteristics = await service.GetCharacteristicsAsync();
                 foreach (ICharacteristic characteristic in characteristics) {
                     App.appSetting.BlueTooth.Characteristics.Add(new BtCharacteristics() { Name = characteristic?.Name, UUid = characteristic.Id.ToString(), Characteristic = characteristic });
-                    
+
                     if (App.appSetting.CharDeviceInfoDefLists.Where(a => a.CharName == characteristic?.Name && a.Uuid == null).Count() > 0) {
                         //Insert Standard BT Info by Name
-                        string value = System.Text.Encoding.UTF8.GetString((await characteristic.ReadAsync()).data);
+                        string value = Encoding.UTF8.GetString((await characteristic.ReadAsync()).data);
                         App.appSetting.DeviceInfoList.Add(new DeviceInfoList() { Name = characteristic?.Name, Value = value });
                         infoList.Add(new TextCell() { Text = characteristic?.Name, Detail = value });
 
                     } else if (App.appSetting.CharDeviceInfoDefLists.Where(a => a.Uuid != null && a.Uuid.ToLower() == characteristic?.Uuid.ToString().ToLower()).Count() > 0) {
                         //Insert DVB info by Uuid
                         CharDeviceInfoDefList customInfo = App.appSetting.CharDeviceInfoDefLists.Where(a => a.Uuid != null && a.Uuid.ToLower() == characteristic?.Uuid.ToString().ToLower()).FirstOrDefault();
-                         
-                        string value = System.Text.Encoding.UTF8.GetString((await characteristic.ReadAsync()).data);
+
+                        string value = Encoding.UTF8.GetString((await characteristic.ReadAsync()).data);
                         App.appSetting.DeviceInfoList.Add(new DeviceInfoList() { Name = customInfo.CharName, Value = value });
                         infoList.Add(new TextCell() { Text = customInfo.CharName, Detail = value });
                     }
@@ -177,7 +147,7 @@ public partial class DeviceManagementPage : ContentPage, GlobalServices {
             }
 
             //Show Action Buttons
-            bt_infoButton.IsVisible = bt_filesButton.IsVisible = true;
+            bt_infoButton.IsVisible = bt_filesButton.IsVisible = bt_formatButton.IsVisible = true;
         } catch (Exception ex) {
             await DetectedErrorListController.SaveDetectedErrorList(new DetectedErrorList() { Message = SystemFunctions.GetSystemErrMessage(ex) });
         }
@@ -192,7 +162,7 @@ public partial class DeviceManagementPage : ContentPage, GlobalServices {
         IsLoading(true);
         infoList.Clear(); infoList.Title = AppResources.InfoReview;
         App.appSetting.DeviceInfoList.ForEach(info => {
-           infoList.Add(new TextCell() { Text = info.Name, Detail = info.Value });
+            infoList.Add(new TextCell() { Text = info.Name, Detail = info.Value });
         });
         IsLoading(false);
     }
@@ -202,27 +172,34 @@ public partial class DeviceManagementPage : ContentPage, GlobalServices {
     private async void BtnFilesButton_Clicked(object sender, EventArgs e) {
         try {
             IsLoading(true);
-            infoList.Clear(); App.appSetting.DeviceFileLists.Clear(); infoList.Title = AppResources.FileList;
-            App.appSetting.BlueTooth.Characteristics.ForEach(async characteristic => {
+            infoList.Clear(); infoList.Title = AppResources.FileList;
 
-                var liadFileCharacteristic = App.appSetting.CharDeviceActionDefLists.Where(a => a.Name == "DvbListFiles").FirstOrDefault();
-                if (liadFileCharacteristic != null) {
-                    if (characteristic.UUid.ToString().ToLower() == liadFileCharacteristic.Uuid) {
 
-                        bool again = true;
-                        while (again) {
-                            List<string> fileInfo = System.Text.Encoding.UTF8.GetString((await characteristic.Characteristic.ReadAsync()).data).Split(";").ToList();
-                            if (fileInfo[0].Length > 0) {
-                                App.appSetting.DeviceFileLists.Add(new DeviceFileList() { Name = fileInfo[0], Length = fileInfo[1] });
-                                var fileLine = new TextCell() { Text = fileInfo[0] };
-                                fileLine.Tapped += FileDownload_Tapped;
-                                infoList.Add(fileLine);
-                            } else { again = false; }
-                        }
+            if (App.appSetting.DeviceFileLists.Count > 0) {
+                //Show  Loaded FileList
+                App.appSetting.DeviceFileLists.ForEach(file => {
+                    var fileLine = new TextCell() { Text = file.Name, Detail = AppResources.Size + ": " + file.Length };
+                    fileLine.Tapped += FileDownload_Clicked;
+                    infoList.Add(fileLine);
+                });
+            } else {
+                //Load FileList
+                var loadFileListCharacteristic = App.appSetting.CharDeviceActionDefLists.Where(a => a.Name == "DvbListFiles").LastOrDefault();
+                var fileListCharacteristic = App.appSetting.BlueTooth.Characteristics.Where(a => a.Characteristic.Uuid.ToString().ToLower() == loadFileListCharacteristic.Uuid.ToLower()).LastOrDefault();
+
+                if (fileListCharacteristic != null) {
+                    bool again = true;
+                    while (again) {
+                        List<string> fileInfo = Encoding.UTF8.GetString((await fileListCharacteristic.Characteristic.ReadAsync()).data).Split(";").ToList();
+                        if (fileInfo[0].Length > 0) { // && int.Parse(fileInfo[1]) > 0
+                            App.appSetting.DeviceFileLists.Add(new DeviceFileList() { Name = fileInfo[0], Length = fileInfo[1] });
+                            var fileLine = new TextCell() { Text = fileInfo[0], Detail = AppResources.Size + ": " + fileInfo[1] };
+                            fileLine.Tapped += FileDownload_Clicked;
+                            infoList.Add(fileLine);
+                        } else { again = false; }
                     }
                 }
-
-            });
+            }
         } catch (Exception ex) {
             await DetectedErrorListController.SaveDetectedErrorList(new DetectedErrorList() { Message = SystemFunctions.GetSystemErrMessage(ex) });
         }
@@ -230,37 +207,111 @@ public partial class DeviceManagementPage : ContentPage, GlobalServices {
     }
 
 
-    //Download Device File
-    private async void FileDownload_Tapped(object sender, EventArgs e) {
+    //TODO Download Device File
+    private async void FileDownload_Clicked(object sender, EventArgs e) {
+        try {
+            IsLoading(true);
+            
+            var loadWriteCharacteristic = App.appSetting.CharDeviceActionDefLists.Where(a => a.Name == "DvbWriteToDevice").LastOrDefault();
+            var loadReadCharacteristic = App.appSetting.CharDeviceActionDefLists.Where(a => a.Name == "DvbReadFromDevice").LastOrDefault();
+
+            var writeCharacteristic = App.appSetting.BlueTooth.Characteristics.Where(a => a.Characteristic.Uuid.ToString().ToLower() == loadWriteCharacteristic.Uuid.ToLower()).LastOrDefault();
+            var readCharacteristic = App.appSetting.BlueTooth.Characteristics.Where(a => a.Characteristic.Uuid.ToString().ToLower() == loadReadCharacteristic.Uuid.ToLower()).LastOrDefault();
+
+            await writeCharacteristic.Characteristic?.WriteAsync(Encoding.UTF8.GetBytes($"{((TextCell)sender).Text};{((TextCell)sender).Detail.Split(": ")[1]};"), default);
+            byte[] fileData = (await readCharacteristic.Characteristic.ReadAsync(default)).data;
+            if (fileData.Length > 0) {
+
+                using var stream = new MemoryStream(fileData);
+                var fileSaveResult = await FileSaver.Default.SaveAsync(((TextCell)sender).Text, stream, default);
+
+                //if (fileSaveResult.IsSuccessful) { await Toast.Make($"File is saved: {fileSaveResult.FilePath}").Show(default);
+                //} else { await Toast.Make($"File is not saved, {fileSaveResult.Exception.Message}").Show(default); }
+
+                //using (FileStream stream = new FileStream(Path.Combine(FileSystem.Current.AppDataDirectory, ((TextCell)sender).Text), FileMode.Create)) {
+                //    await stream.WriteAsync(fileData.data);
+                //}
+            }
+        }
+        catch (Exception ex) { await DetectedErrorListController.SaveDetectedErrorList(new DetectedErrorList() { Message = SystemFunctions.GetSystemErrMessage(ex) }); }
+        IsLoading(false);
+    }
+
+
+    //Format Device Data 
+    private async void BtnFormatButton_Clicked(object sender, EventArgs e) {
+        bool action = await DisplayAlert(AppResources.CleanDevice, AppResources.CleanDeviceQuestion, AppResources.Yes, AppResources.Cancel);
+        if (action) { await FormatDevice(); ClearListBTdata(); }
+        IsLoading(false);
+    }
+
+
+
+
+
+    ///FUNCTION PART 
+     // Set up scanner
+    private void ConfigureBLE() {
+        App.appSetting.BlueTooth.BtAdapter.ScanMode = ScanMode.LowLatency; App.appSetting.BlueTooth.BtAdapter.ScanTimeout = 10000; // ms
+        App.appSetting.BlueTooth.Bluetooth.StateChanged += Bluetooth_StateChanged; App.appSetting.BlueTooth.BtAdapter.ScanTimeoutElapsed += BtAdapter_ScanTimeoutElapsed;
+        App.appSetting.BlueTooth.BtAdapter.DeviceAdvertised += BtAdapter_DeviceAdvertised; App.appSetting.BlueTooth.BtAdapter.DeviceDiscovered += BtAdapter_DeviceDiscovered; ;
+    }
+
+
+    //Check BT Permissions
+    private async Task<bool> CheckBtPermissions() {
+        var permissionResult = await Permissions.CheckStatusAsync<Permissions.Bluetooth>();
+        if (permissionResult != PermissionStatus.Granted) { permissionResult = await Permissions.RequestAsync<Permissions.Bluetooth>(); }
+        if (permissionResult != PermissionStatus.Granted) { AppInfo.ShowSettingsUI(); return false; }
+        return true;
+    }
+
+
+    //Disconnect and Clear Datasets
+    private async Task<bool> ForgotBTDevices() {
+        await DisconnectDevice();
+        App.appSetting.BlueTooth.BtAvailableDevices.Clear(); App.appSetting.BlueTooth.Characteristics.Clear();
+        deviceList.Clear(); ClearListBTdata();
+        return true;
+    }
+
+
+    //Disconnect Device
+    private async Task<bool> DisconnectDevice() {
+        foreach (var device in App.appSetting.BlueTooth.BtAdapter.ConnectedDevices) { await App.appSetting.BlueTooth.BtAdapter.DisconnectDeviceAsync(device); }
+        return true;
+    }
+    //Clear Readed BTdata 
+    private void ClearListBTdata() {
+        App.appSetting.BlueTooth.Characteristics.Clear();
+        infoList.Clear();
+        App.appSetting.DeviceInfoList.Clear(); App.appSetting.DeviceFileLists.Clear();
+        infoList.Title = AppResources.InfoReview;
+        bt_infoButton.IsVisible = bt_filesButton.IsVisible = bt_formatButton.IsVisible = false;
+    }
+
+
+    //Set Indicator IsLoading
+    private void IsLoading(bool isLoading) { //((Button)button).BackgroundColor = Color.Parse("Red");
+        if (isLoading) {  PageContent.Children.Where(a => a.GetType().Name == "Button").ToList().ForEach(button => { ((Button)button).IsEnabled = false; });
+        } else { PageContent.Children.Where(a => a.GetType().Name == "Button").ToList().ForEach(button => { ((Button)button).IsEnabled = true; }); }
+        aiLoading.IsRunning = isLoading;
+    }
+
+
+    //Device Format Function Do Reset Device
+    private async Task<bool> FormatDevice() {
         try {
             IsLoading(true);
             infoList.Clear(); App.appSetting.DeviceFileLists.Clear(); infoList.Title = AppResources.FileList;
-            App.appSetting.BlueTooth.Characteristics.ForEach(async characteristic => {
-
-                var liadFileCharacteristic = App.appSetting.CharDeviceActionDefLists.Where(a => a.Name == "DvbListFiles").FirstOrDefault();
-                if (liadFileCharacteristic != null) {
-                    if (characteristic.UUid.ToString().ToLower() == liadFileCharacteristic.Uuid) {
-
-                        bool again = true;
-                        while (again) {
-                            List<string> fileInfo = System.Text.Encoding.UTF8.GetString((await characteristic.Characteristic.ReadAsync()).data).Split(";").ToList();
-                            if (fileInfo[0].Length > 0) {
-                                App.appSetting.DeviceFileLists.Add(new DeviceFileList() { Name = fileInfo[0], Length = fileInfo[1] });
-                                var fileLine = new TextCell() { Text = fileInfo[0] };
-                                fileLine.Tapped += FileDownload_Tapped;
-                                infoList.Add(fileLine);
-                            }
-                            else { again = false; }
-                        }
-                    }
-
-                }
-
-            });
-        } catch (Exception ex) {
-            await DetectedErrorListController.SaveDetectedErrorList(new DetectedErrorList() { Message = SystemFunctions.GetSystemErrMessage(ex) });
-        }
+            var loadFormatCharacteristic = App.appSetting.CharDeviceActionDefLists.Where(a => a.Name == "DvbFormatStorage").LastOrDefault();
+            var formatCharacteristic = App.appSetting.BlueTooth.Characteristics.Where(a => a.Characteristic.Uuid.ToString().ToLower() == loadFormatCharacteristic.Uuid.ToLower()).LastOrDefault();
+            await formatCharacteristic.Characteristic.ReadAsync();
+        } catch { }
         IsLoading(false);
+        return true;
     }
+
+
 }
 

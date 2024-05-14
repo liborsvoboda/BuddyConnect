@@ -21,7 +21,8 @@ namespace BuddyConnect.DatabaseModel {
         public static List<SettingList> DefaultItems = new List<SettingList>() {
              new SettingList() { Key = "Theme", Value ="Light"},
              new SettingList() { Key = "Language", Value ="cs"},
-             new SettingList() { Key = "DeviceName", Value ="DVBdiver"}
+             new SettingList() { Key = "DeviceName", Value ="DVBdiver"},
+             new SettingList() { Key = "WebPage", Value ="https://kliknetezde.cz/"}
         };
     }
 

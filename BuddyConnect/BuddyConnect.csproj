@@ -144,6 +144,9 @@
 	  <Compile Update="GlobalPages\NoteListPage.xaml.cs">
 	    <DependentUpon>NoteListPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="GlobalPages\ContactListPage.xaml.cs">
+	    <DependentUpon>ContactListPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="GlobalPages\TemplateListPage.xaml.cs">
 	    <DependentUpon>TemplateListPage.xaml</DependentUpon>
 	  </Compile>
@@ -181,6 +184,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="GlobalPages\NoteListPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="GlobalPages\ContactListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="GlobalPages\TemplateListPage.xaml">

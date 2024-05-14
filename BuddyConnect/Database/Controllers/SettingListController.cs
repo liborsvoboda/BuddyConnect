@@ -1,7 +1,6 @@
 ﻿using SQLite;
 using BuddyConnect.DatabaseModel;
 using BuddyConnect.Resources.Languages;
-using System.Diagnostics;
 using BuddyConnect.Functions;
 
 namespace BuddyConnect.Controllers {
@@ -22,32 +21,34 @@ namespace BuddyConnect.Controllers {
         }
 
 
-        //public static async Task<int> SaveSettingList(SettingList item) {
-        //    if (item.Id != 0) {
-        //        return await App.appSetting.Database.UpdateAsync(item);
-        //    }
-        //    else { return await App.appSetting.Database.InsertAsync(item); }
-        //}
-
         public static async Task<int> SaveSettingList(SettingList item) {
-            try { 
-                return await App.appSetting.Database.InsertAsync(item);
-            } 
-            catch (Exception ex) {
-                await DetectedErrorListController.SaveDetectedErrorList(new DetectedErrorList() { Message = SystemFunctions.GetSystemErrMessage(ex) });
+            try {
 
-            }
+                if (GetSettingListByKey(item.Key) != null) {
+                    return await App.appSetting.Database.UpdateAsync(item);
+                } else { return await App.appSetting.Database.InsertAsync(item); }
+
+            } catch (Exception ex) { await DetectedErrorListController.SaveDetectedErrorList(new DetectedErrorList() { Message = SystemFunctions.GetSystemErrMessage(ex) }); }
             return 0;
         }
+
+        //public static async Task<int> SaveSettingList(SettingList item) {
+        //    try { 
+        //        return await App.appSetting.Database.InsertAsync(item);
+        //    } 
+        //    catch (Exception ex) {
+        //        await DetectedErrorListController.SaveDetectedErrorList(new DetectedErrorList() { Message = SystemFunctions.GetSystemErrMessage(ex) });
+
+        //    }
+        //    return 0;
+        //}
 
 
         public static async Task<int> SaveSettingListRange(List<SettingList> item) {
             try { 
                 return await App.appSetting.Database.InsertAllAsync(item);
-            } 
-            catch (Exception ex) {
+            }  catch (Exception ex) {
                 await DetectedErrorListController.SaveDetectedErrorList(new DetectedErrorList() { Message = SystemFunctions.GetSystemErrMessage(ex) });
-
             }
             return 0;
         }
