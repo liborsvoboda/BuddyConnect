@@ -173,3 +173,38 @@ catch (Exception ex) {
 - Novinky ze Serveru
 - stranky ze serveru
 - 
+
+# Možnosti Aplikace: Centrální a Globální LOGIKA  
+
+- aplikace je multiplatformní TZN. 1 VÝVOJ PRO VŠECHNY windows,ios,android,mac  
+- aplikace stojí na Databázi:  sběr dat, logování:
+- - možnosti detailních analýz 
+  - sběru požadavků
+  - vyhodncení a nabídka akcí uživatelů dle prováděných úkonů a jejich oblíbenosti
+  - vyhodnocování používání a jejich optimalizace
+  - modení vývoj a Online nasazení změn
+  - sběru informací o výkonu, integritě software a následné ladění
+- Aplikace využívá multimediální rozhraní
+- - umí vše od vytváření libovolných mediálních prezentací např z obrázků, 
+   Fotek pod vodou idělat slideshow prezentaci na Facebook, vosílat živá videa
+  - komunikovat s okolními a spřátelenými zařízeními, servery, atd.
+
+- Automaticky multijazyčná: slovník se dá nastavit na serverru a centrálně jej stravovat
+- libovolná správa obsahu aPLIKace: menu, možnosti, fukncionality lze dynamicky
+- nastavit tak aby se z 1 administrační aplikace dala měnit aplikace na mobilech všech užvatelů na celé planetě
+  pouhým nastavením v administraci na serveru, které si mobily stáhnou ze serveru na pozadí
+  a sami se aktualizují
+
+- aplikace umí vnitřně zobrazovat webvové stránky: tzn 1 WEB = centrální systém 
+  všechny mobily uvidí změny na webu ihned po otevření bez nutnosti nějakých updatů, atd
+
+- Dynamické menu: lze nastavit stahování ze serveru tak, že aplikace nabídne možnosti
+  stažené ze serveru a sama si je doplní. Není nutný Vývoj, nová menu se vygenerují dle nastavení
+
+- Centrální globální správe všech aplikací, verzí, jednotek
+
+TAK by měl být bussines v dbnešní dynamické době nastaven
+
+
+  
+ 
