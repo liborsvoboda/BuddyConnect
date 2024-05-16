@@ -186,6 +186,9 @@
   <data name="DeviceName" xml:space="preserve">
     <value>Device Name</value>
   </data>
+  <data name="DeviceSearchTimeOut" xml:space="preserve">
+    <value>Device Search Interval</value>
+  </data>
   <data name="EnableBt" xml:space="preserve">
     <value>Enable BluetTooth</value>
   </data>
@@ -254,6 +257,9 @@
   </data>
   <data name="SearchedDeviceName" xml:space="preserve">
     <value>Searched Device Name</value>
+  </data>
+  <data name="SearchTimeInSec" xml:space="preserve">
+    <value>Search Time in sec</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>

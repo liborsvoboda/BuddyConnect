@@ -23,9 +23,9 @@ namespace BuddyConnect {
 
 
         //Data PART
-        public string Language { get; set; }
-        public string Theme { get; set; }
-        public string TranslatedTheme { get; set; }
+        //public string Language { get; set; }
+        //public string Theme { get; set; }
+        //public string TranslatedTheme { get; set; }
         //public string DeviceName { get; set; }
 
         public List<SettingList> Settings { get; set; } = new List<SettingList>();

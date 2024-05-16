@@ -268,6 +268,15 @@ namespace BuddyConnect.Resources.Languages {
         }
         
         /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Interval Hledání Jednotek.
+        /// </summary>
+        public static string DeviceSearchTimeOut {
+            get {
+                return ResourceManager.GetString("DeviceSearchTimeOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Vyhledá lokalizovaný řetězec podobný Zapněte BluetTooth.
         /// </summary>
         public static string EnableBt {
@@ -471,6 +480,15 @@ namespace BuddyConnect.Resources.Languages {
         public static string SearchedDeviceName {
             get {
                 return ResourceManager.GetString("SearchedDeviceName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Vyhledá lokalizovaný řetězec podobný Čas hledání v sec..
+        /// </summary>
+        public static string SearchTimeInSec {
+            get {
+                return ResourceManager.GetString("SearchTimeInSec", resourceCulture);
             }
         }
         

@@ -7,6 +7,17 @@ namespace BuddyConnect
 
 
         public WebViewPage() {
+         
+            _ = LoadStartUpData();
+        }
+
+
+        public async Task Dismiss() {
+            await Navigation.PopModalAsync();
+        }
+
+        public async Task<bool> LoadStartUpData() {
+
             Label header = new Label {
                 Text = AppResources.WebViewPage,
                 FontSize = 32,
@@ -22,24 +33,15 @@ namespace BuddyConnect
             };
 
             // Accomodate iPhone status bar.
-            this.Padding = new Thickness(10,20, 10, 5);
+            this.Padding = new Thickness(10, 20, 10, 5);
 
             // Build the page.
             this.Content = new StackLayout {
                 VerticalOptions = LayoutOptions.Fill,
                 HorizontalOptions = LayoutOptions.Fill,
-                Children = { /*header,*/ webView }
+                Children = { header, webView }
             };
-
-            _ = LoadStartUpData();
-        }
-
-
-        public async Task Dismiss() {
-            await Navigation.PopModalAsync();
-        }
-
-        public async Task<bool> LoadStartUpData() {
+            Content.AddLogicalChild(webView);
             TranslatePageObjects();
             return true;
         }

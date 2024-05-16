@@ -5,15 +5,15 @@ namespace BuddyConnect {
     public static class Constants {
         public const string DatabaseFilename = "BuddyConnect.db3";
 
-        public const SQLite.SQLiteOpenFlags Flags =
+        public const SQLiteOpenFlags Flags =
             // open the database in read/write mode
-            SQLite.SQLiteOpenFlags.ReadWrite |
+            SQLiteOpenFlags.ReadWrite |
             // create the database if it doesn't exist
-            SQLite.SQLiteOpenFlags.Create |
+            SQLiteOpenFlags.Create |
             // enable multi-threaded database access
-            SQLite.SQLiteOpenFlags.SharedCache;
+            SQLiteOpenFlags.SharedCache;
 
         public static string DatabasePath =>
-            Path.Combine(FileSystem.AppDataDirectory, DatabaseFilename);
+            Path.Combine(FileSystem.Current.AppDataDirectory , DatabaseFilename);
     }
 }

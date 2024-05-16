@@ -57,6 +57,9 @@ dotnet workload install android
 
 
 ---   
+# BT Tool Online
+
+https://vyvoj.ctgroup.cz/dvbt/
 
 # Centralni Logika Aplikace   
 Centralni Logiky slouzi pro jednotne nastaveni a chovani aplikace.   

@@ -186,6 +186,9 @@
   <data name="DeviceName" xml:space="preserve">
     <value>Název jednotky</value>
   </data>
+  <data name="DeviceSearchTimeOut" xml:space="preserve">
+    <value>Interval Hledání Jednotek</value>
+  </data>
   <data name="EnableBt" xml:space="preserve">
     <value>Zapněte BluetTooth</value>
   </data>
@@ -254,6 +257,9 @@
   </data>
   <data name="SearchedDeviceName" xml:space="preserve">
     <value>Hledaný Název Jednotky</value>
+  </data>
+  <data name="SearchTimeInSec" xml:space="preserve">
+    <value>Čas hledání v sec.</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Nastavení</value>

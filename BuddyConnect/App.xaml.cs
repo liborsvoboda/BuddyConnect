@@ -24,5 +24,6 @@ public partial class App : Application {
         App.appSetting.BlueTooth = new BlueTooth();
         App.appSetting.BlueTooth.Bluetooth = CrossBluetoothLE.Current;
         App.appSetting.BlueTooth.BtAdapter = CrossBluetoothLE.Current.Adapter;
+
     }
 }

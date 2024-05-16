@@ -11,49 +11,53 @@ namespace BuddyConnect.Functions
 
         //Central Change Theme
         public async static Task<string> ChangeorLoadTheme(bool change = false) {
-            string theme = null; string translatedTheme = null;
+            string theme = null; 
             ICollection<ResourceDictionary> mergedDictionaries = Application.Current.Resources.MergedDictionaries;
             if (mergedDictionaries != null) { mergedDictionaries.Clear(); }
 
-            //Load from DB
-            if (string.IsNullOrWhiteSpace(theme) && App.appSetting.Theme == null) {
+            
+            if (string.IsNullOrWhiteSpace(theme) && App.appSetting.Settings.Where(a=>a.Key == "Theme").First().Value == null) {
+                //Load from DB
                 theme = (await SettingListController.LoadSettingListThemeStartup()).Value;
                 change = false;
+            }
+            else if (string.IsNullOrWhiteSpace(theme) && App.appSetting.Settings.Where(a => a.Key == "Theme").First().Value != null && !change) {
                 //Load from Setting
+                theme = App.appSetting.Settings.Where(a => a.Key == "Theme").First().Value;
             }
-            else if (string.IsNullOrWhiteSpace(theme) && App.appSetting.Theme != null && !change) {
-                theme = App.appSetting.Theme;
-
+            else if (string.IsNullOrWhiteSpace(theme) && App.appSetting.Settings.Where(a => a.Key == "Theme").First().Value != null && change) {
                 //change Theme
-            }
-            else if (string.IsNullOrWhiteSpace(theme) && App.appSetting.Theme != null && change) {
-                theme = App.appSetting.Theme;
+                theme = App.appSetting.Settings.Where(a => a.Key == "Theme").First().Value;
             }
 
             if (!change) {
                 switch (theme) {
                     case "Light":
-                        theme = "Light"; translatedTheme = App.appSetting.TranslatedTheme = AppResources.Dark;
-                        mergedDictionaries.Add(new LightTheme()); break;
+                        theme = "Light"; 
+                        mergedDictionaries.Add(new LightTheme()); 
+                        break;
                     case "Dark":
                     default:
-                        theme = "Dark"; translatedTheme = App.appSetting.TranslatedTheme = AppResources.Light;
-                        mergedDictionaries.Add(new DarkTheme()); break;
+                        theme = "Dark"; 
+                        mergedDictionaries.Add(new DarkTheme()); 
+                        break;
                 }
             }
             else {
                 switch (theme) {
                     case "Light":
-                        theme = "Dark"; translatedTheme = App.appSetting.TranslatedTheme = AppResources.Light;
-                        mergedDictionaries.Add(new DarkTheme()); break;
+                        theme = "Dark"; 
+                        mergedDictionaries.Add(new DarkTheme()); 
+                        break;
                     case "Dark":
                     default:
-                        theme = "Light"; translatedTheme = App.appSetting.TranslatedTheme = AppResources.Dark;
-                        mergedDictionaries.Add(new LightTheme()); break;
+                        theme = "Light";
+                        mergedDictionaries.Add(new LightTheme()); 
+                        break;
                 }
                 await SettingListController.SetSelectedTheme(theme);
             }
-            return translatedTheme;
+            return theme;
         }
 
 
@@ -66,14 +70,13 @@ namespace BuddyConnect.Functions
             }
 
             //Save Selected Dictionary
-            App.appSetting.Language = language;
             await SettingListController.SetSelectedLanguage(language);
 
             //Set Selected Dictionary
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(language);
             AppResources.Culture = new CultureInfo(language);
 
-            return App.appSetting.Language;
+            return App.appSetting.Settings.Where(a => a.Key == "Language").First().Value;
         }
 
 

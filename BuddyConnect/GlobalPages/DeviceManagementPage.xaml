@@ -24,7 +24,7 @@
         <Label
             x:Name="lbl_status"
             Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
-            FontSize="32" HorizontalOptions="Center"
+            FontSize="32" HorizontalOptions="Start"
             TextColor="{DynamicResource SecondaryTextColor}" />
 
         <Button
@@ -38,10 +38,10 @@
         <VerticalStackLayout
             Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
             Margin="0" Padding="0"
-            Background="AntiqueWhite" HorizontalOptions="CenterAndExpand" IsVisible="True" VerticalOptions="Start">
+            Background="AntiqueWhite" HorizontalOptions="Fill" IsVisible="True" VerticalOptions="Start">
 
             <TableView
-                HorizontalOptions="CenterAndExpand" Intent="Menu" VerticalOptions="CenterAndExpand">
+                HorizontalOptions="Fill" Intent="Menu" VerticalOptions="CenterAndExpand">
                 <TableRoot x:Name="deviceTable">
                     <TableSection x:Name="deviceList" Title="{x:Static language:AppResources.AvailableDevices}" />
                 </TableRoot>

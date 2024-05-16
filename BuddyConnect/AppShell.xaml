@@ -34,7 +34,7 @@
                 TextColor="White" VerticalOptions="End" WidthRequest="180" />
 
             <HorizontalStackLayout
-                Padding="0,20,10,0"
+                Padding="0,0,10,0"
                 HeightRequest="40" HorizontalOptions="Center" VerticalOptions="Start" WidthRequest="100">
                 <Button
                     x:Name="theme"
@@ -65,7 +65,7 @@
     <!--<FlyoutItem FlyoutDisplayOptions="AsMultipleItems">-->
     <!--  MOZNOST NATAHOVAT DO MENU DYNAMICKY WEBOVE STRANKY  -->
     <!--  KDYZ SE PREDELA TOTO MENU DO PROGRAMATICALLY DEFINITIONS  -->
-    <!--PRES REGISTER ROUTE-->
+    <!--  PRES REGISTER ROUTE  -->
     <ShellContent
         x:Name="WelcomePage"
         Title="{x:Static language:AppResources.AppName}"
@@ -90,7 +90,7 @@
         Icon="{mi:Fluent Icon=WebAsset24,
                          IconSize=30}"
         Route="WebViewPage" />
-    <!--</FlyoutItem>-->
+
 
     <ShellContent
         x:Name="NewsListPage"
@@ -103,6 +103,7 @@
 
     <ShellContent
         x:Name="SettingListPage"
+        Title="{x:Static language:AppResources.Settings}"
         ContentTemplate="{DataTemplate local:SettingListPage}"
         Icon="{mi:Fluent Icon=DataUsageSettings20,
                          IconSize=30}"
@@ -117,6 +118,7 @@
                            IconSize=30}"
         Route="NoteListPage" />
 
+    
     <ShellContent
         x:Name="ContactListPage"
         Title="{x:Static language:AppResources.Contacts}"
@@ -125,6 +127,7 @@
                            IconSize=30}"
         Route="ContactListPage" />
 
+    
     <ShellContent
         x:Name="AboutListPage"
         Title="{x:Static language:AppResources.About}"
@@ -133,4 +136,5 @@
                            IconSize=30}"
         Route="AboutListPage" />
 
+    
 </Shell>

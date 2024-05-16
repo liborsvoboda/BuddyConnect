@@ -7,9 +7,8 @@ using MauiIcons.FontAwesome.Solid;
 using MauiIcons.Material;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Controls.Compatibility.Hosting;
-using Plugin.BLE;
-using Plugin.BLE.Abstractions.Contracts;
 using SimpleToolkit.Core;
+using static Microsoft.Maui.ApplicationModel.Permissions;
 
 namespace BuddyConnect {
 
@@ -25,23 +24,25 @@ namespace BuddyConnect {
                 .UseMauiCompatibility()
                 .UseSwitch()
                 .UseSimpleToolkit()
-                
+
+
                 .UseMauiCommunityToolkit()
                 .UseMauiCommunityToolkitCore()
                 .UseMauiCommunityToolkitMediaElement()
+
 
                 .UseMaterialMauiIcons()
                 .UseFontAwesomeMauiIcons()
                 .UseFluentMauiIcons()
                 .UseFontAwesomeSolidMauiIcons()
-                
-                
+
+
                 .ConfigureFonts()
                 .ConfigureAnimations()
                 .ConfigureDispatching()
                 .ConfigureImageSources()
                 .DisplayContentBehindBars()
-                
+
 
                 .ConfigureFonts(fonts => {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -57,10 +58,6 @@ namespace BuddyConnect {
             //Services Controls
             builder.Services.AddSingleton<StatupControls>();
            
-
-            //IBluetoothLE ble = CrossBluetoothLE.Current;
-            //IAdapter adapter = CrossBluetoothLE.Current.Adapter;
-
             return builder.Build();
         }
     }

@@ -9,14 +9,17 @@
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     BackgroundColor="{DynamicResource PageBackgroundColor}">
 
-    <StackLayout HorizontalOptions="Fill" VerticalOptions="Fill">
-        <CarouselView x:Name="cv_carousel" IndicatorView="indicatorView">
+    <StackLayout
+        HeightRequest="700" HorizontalOptions="Fill" MinimumHeightRequest="700" VerticalOptions="Fill">
+        <CarouselView
+            x:Name="cv_carousel"
+            HeightRequest="650" HorizontalOptions="Fill" IndicatorView="indicatorView" MinimumHeightRequest="650" VerticalOptions="Fill">
             <CarouselView.ItemTemplate>
                 <DataTemplate>
                     <StackLayout HorizontalOptions="Fill" VerticalOptions="Fill">
                         <Frame
                             Margin="20"
-                            BorderColor="DarkGray" CornerRadius="5" HasShadow="True" HeightRequest="600" HorizontalOptions="Center" VerticalOptions="Center">
+                            BorderColor="DarkGray" CornerRadius="5" HasShadow="True" HeightRequest="600" HorizontalOptions="Fill" MinimumHeightRequest="600" VerticalOptions="Center">
                             <StackLayout>
 
                                 <Label
@@ -46,7 +49,7 @@
         <IndicatorView
             x:Name="indicatorView"
             Margin="0,0,0,40"
-            HorizontalOptions="Center" IndicatorColor="LightGray" IndicatorsShape="Square" SelectedIndicatorColor="DarkGray" />
+            HorizontalOptions="Center" IndicatorColor="LightGray" IndicatorsShape="Square" SelectedIndicatorColor="Orange" />
     </StackLayout>
 
 </ContentPage>

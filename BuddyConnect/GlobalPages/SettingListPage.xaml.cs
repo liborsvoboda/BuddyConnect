@@ -25,6 +25,7 @@ namespace BuddyConnect
         public async Task<bool> LoadStartUpData() {
             txt_deviceName.Text = App.appSetting.Settings.Where(a => a.Key == "DeviceName").FirstOrDefault().Value;
             txt_webPage.Text = App.appSetting.Settings.Where(a => a.Key == "WebPage").FirstOrDefault().Value;
+            txt_deviceSearchTimeOut.Text = App.appSetting.Settings.Where(a => a.Key == "DeviceSearchTimeOut").FirstOrDefault().Value;
             TranslatePageObjects();
             return true;
         }
@@ -34,6 +35,8 @@ namespace BuddyConnect
         private void TranslatePageObjects() {
             lbl_deviceName.Text = AppResources.SearchedDeviceName;
             txt_deviceName.Placeholder = AppResources.SearchDeviceName;
+            lbl_deviceSearchTimeOut.Text = AppResources.DeviceSearchTimeOut;
+            txt_deviceSearchTimeOut.Placeholder = AppResources.SearchTimeInSec;
             lbl_webPage.Text = AppResources.WebViewPage;
             txt_webPage.Placeholder = AppResources.MenuWebViewPage;
             btn_save.Text = AppResources.Save;
@@ -43,8 +46,10 @@ namespace BuddyConnect
         private async void BtnSave_Clicked(object sender, EventArgs e) {
             try {
                 aiLoading.IsRunning = true;
-                await SettingListController.SaveSettingList(new SettingList() { Key = "DeviceName", Value = txt_deviceName.Text });
-                await SettingListController.SaveSettingList(new SettingList() { Key = "WebPage", Value = txt_webPage.Text });
+                await SettingListController.InsertOrUpdateSettingListAsync(new SettingList() { Key = "DeviceName", Value = txt_deviceName.Text });
+                await SettingListController.InsertOrUpdateSettingListAsync(new SettingList() { Key = "WebPage", Value = txt_webPage.Text });
+                await SettingListController.InsertOrUpdateSettingListAsync(new SettingList() { Key = "DeviceSearchTimeOut", Value = txt_deviceSearchTimeOut.Text });
+                
                 App.appSetting.Settings = await SettingListController.GetSettingList();
                 await LoadStartUpData();
 

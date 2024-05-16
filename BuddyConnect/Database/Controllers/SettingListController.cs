@@ -21,7 +21,7 @@ namespace BuddyConnect.Controllers {
         }
 
 
-        public static async Task<int> SaveSettingList(SettingList item) {
+        public static async Task<int> InsertOrUpdateSettingListAsync(SettingList item) {
             try {
 
                 if (GetSettingListByKey(item.Key) != null) {
@@ -69,11 +69,10 @@ namespace BuddyConnect.Controllers {
         public static async Task<int> SetSelectedLanguage(string language) {
             try { 
                 SettingList selectedLanguage = new() { Key = "Language", Value = language };
-                App.appSetting.Language = language;
-                return await App.appSetting.Database.UpdateAsync(selectedLanguage);
+                await App.appSetting.Database.UpdateAsync(selectedLanguage);
+                App.appSetting.Settings = await GetSettingList();
             } catch (Exception ex) { 
                 await DetectedErrorListController.SaveDetectedErrorList(new DetectedErrorList() { Message = SystemFunctions.GetSystemErrMessage(ex) });
- 
             }
             return 0;
         }
@@ -82,12 +81,10 @@ namespace BuddyConnect.Controllers {
         public static async Task<int> SetSelectedTheme(string theme) {
             try { 
                 SettingList selectedTheme = new SettingList() { Key = "Theme", Value = theme };
-                App.appSetting.Theme = theme;
-                App.appSetting.TranslatedTheme = AppResources.ResourceManager.GetString(theme);
-                return await App.appSetting.Database.UpdateAsync(selectedTheme);
+                await InsertOrUpdateSettingListAsync(selectedTheme);
+                App.appSetting.Settings = await GetSettingList();
             } catch (Exception ex) {
                 await DetectedErrorListController.SaveDetectedErrorList(new DetectedErrorList() { Message = SystemFunctions.GetSystemErrMessage(ex) });
- 
             }
             return 0;
         }
