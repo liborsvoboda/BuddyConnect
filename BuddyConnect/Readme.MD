@@ -204,7 +204,8 @@ catch (Exception ex) {
 - Centrální globální správe všech aplikací, verzí, jednotek
 
 TAK by měl být bussines v dbnešní dynamické době nastaven
-
+proto aby to takto fungovalo musí naslouchat i p. Bartoš a upravit tak konfiguraci
+místo tvrzerní že jsem konfliktní se na to dívat z tohoto pohledu
 
   
  
